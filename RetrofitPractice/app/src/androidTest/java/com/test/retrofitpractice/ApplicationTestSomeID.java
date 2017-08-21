@@ -8,6 +8,7 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.test.ApplicationTestCase;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -25,18 +26,20 @@ public class ApplicationTestSomeID extends ApplicationTestCase<Application> {
 
 
     public void testRe(){
+
+
         android.telephony.TelephonyManager tm = (android.telephony.TelephonyManager) getContext()
                 .getSystemService(Context.TELEPHONY_SERVICE);
-        System.out.println("device_id"+tm.getDeviceId());
+        Log.i("device_id",tm.getDeviceId());
 
        String Secure_id = android.provider.Settings.Secure.getString(getContext().getContentResolver(),
                 android.provider.Settings.Secure.ANDROID_ID);
 
-        System.out.println("Secure_id"+Secure_id);
+        Log.i("Secure_id",Secure_id);
 
         WifiManager wifiManager = (WifiManager) getContext().getSystemService(Context.WIFI_SERVICE);
         String macAddress = wifiManager.getConnectionInfo().getMacAddress();
-        System.out.println("macAddress"+macAddress);
+        Log.i("macAddress",macAddress);
     }
 
     private   boolean checkPermission(Context context, String permission) {

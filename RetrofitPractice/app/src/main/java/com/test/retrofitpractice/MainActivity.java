@@ -22,6 +22,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+       testRetrofit();
+
+       // OKHttpTest.test1();
+
+    }
+
+    public static void testRetrofit() {
         QueryService queryService = RetrofitInstance.getQueryService();
         Call<ExpressUser> call = queryService.getEXpressInfo("31");
         call.enqueue(new Callback<ExpressUser>() {
@@ -53,6 +60,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.i("onResponse", t.getLocalizedMessage());
+            }
+        });
+
+        Call<ResponseBody> call3=queryService.expressLogin("ac:f7:f3:83:57:7b","31","123456");
+        call3.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                ResponseBody responseBody=response.body();
+                try {
+                    Log.i("onResponse",responseBody.string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
             }
         });
     }
