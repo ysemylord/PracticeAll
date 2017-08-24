@@ -26,8 +26,19 @@
         android:onClick="tranlate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-</LinearLayout>
+    <Button
+        android:text="平移2"
+        android:onClick="tranlate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
+</LinearLayout>
+    <Button
+        android:layout_marginTop="50dp"
+        android:text="透明"
+        android:onClick="alpha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <View
         android:id="@+id/center_view"
         android:layout_width="70dp"
