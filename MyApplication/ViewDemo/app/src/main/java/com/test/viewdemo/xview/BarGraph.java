@@ -4,23 +4,36 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created  on 2017/8/21.
- *
+ *  建设一个需求，
+ *  将小明各科成绩(没科成绩为0-100分)，以条形图的形式展示出来
  * @author xyb
  */
 
 public class BarGraph extends View {
+    private final Paint mainPaint;
+    int barColor = Color.BLUE;//柱状的颜色
+    int bgColor = Color.parseColor("#afafafaf");
+    int originPaddingLeft = 50;//原点距画布左边的距离
+    int originPaddingBottom = 50;//原点距画布底边的距离
     int origin_x, origin_y;
-    int x_width = 700, y_height = 700;
-    int bar_with = 20, bar_gap = 60;
-    int[] bar_height_arrs = new int[]{100, 500, 400, 600, 300};
-    String[] bar_name_arrs = new String[]{"java", "oc", "c++", "swift", "kotlin"};
+    int x_width = 700;//x轴宽度
+    int y_height = 700;//y轴高度
+    int bar_with = 20;//条形宽度
+    int bar_gap = 60;//两个条形之间的间隙
+
+
+    private Paint pointPaint;
+    List<BarModel> barModelList;
 
     public BarGraph(Context context) {
         super(context);
@@ -34,48 +47,117 @@ public class BarGraph extends View {
         super(context, attrs, defStyleAttr);
     }
 
+    {
+
+        barModelList = new ArrayList<>();
+        pointPaint = new Paint();
+        pointPaint.setStrokeWidth(5);
+        pointPaint.setColor(Color.RED);
+
+        mainPaint = new Paint();
+        BarModel barModel1 = new BarModel(80, "数学");
+        BarModel barModel2 = new BarModel(40, "英语");
+        BarModel barModel3 = new BarModel(70, "语文");
+        BarModel barModel4 = new BarModel(60, "生物");
+        BarModel barModel5 = new BarModel(50, "物理");
+        barModelList.add(barModel1);
+        barModelList.add(barModel2);
+        barModelList.add(barModel3);
+        barModelList.add(barModel4);
+        barModelList.add(barModel5);
+
+
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        Paint pointPaint=new Paint();
-        pointPaint.setStrokeWidth(5);
-        pointPaint.setColor(Color.RED);
 
-        canvas.drawColor(Color.GRAY);
+        canvas.drawColor(bgColor);//设置整个canvase的颜色，
 
-        Paint paint = new Paint();
-        paint.setColor(Color.WHITE);
-        origin_x = 50;
-        origin_y = getHeight() - 50;
-        paint.setStrokeWidth(3);
-        canvas.drawLine(origin_x, origin_y, origin_x + x_width, origin_y, paint);//横轴
-        canvas.drawLine(origin_x, origin_y, origin_x, origin_y - y_height, paint);//竖轴
+        drawXY(canvas);
 
+
+        mainPaint.setStrokeWidth(30);
+        mainPaint.setTextSize(20);
+        Paint.FontMetrics fontMetrics = mainPaint.getFontMetrics();
 
         int bar_x = origin_x;
-        paint.setStrokeWidth(30);
-        paint.setColor(Color.GREEN);
+        for (int i = 0; i < barModelList.size(); i++) {
 
-        Paint.FontMetrics fontMetrics= paint.getFontMetrics();
-        paint.setTextSize(20);
+            BarModel barModel = barModelList.get(i);
 
-        for (int i = 0; i < bar_height_arrs.length; i++) {
-
-            int barHeight=bar_height_arrs[i];
+            //绘制条形
+            mainPaint.setColor(barColor);
+            int barHeight = (int) (barModel.barHeight*1f/100*configYHeight());
             bar_x = bar_x + bar_gap + bar_with;
-            canvas.drawLine(bar_x, origin_y, bar_x, origin_y - barHeight, paint);
+            canvas.drawLine(bar_x, origin_y, bar_x, origin_y - barHeight, mainPaint);
 
-            canvas.drawPoint(bar_x,origin_y,pointPaint);
+            canvas.drawPoint(bar_x, origin_y, pointPaint);//把起始点画出来，作为观察绘制的辅助点
 
-            String name=bar_name_arrs[i];
-            int name_width = (int) paint.measureText(name);
-            int startX = bar_x ;
-            Rect textBounds = new Rect();
-            paint.getTextBounds(name, 0, name.length(), textBounds);
-            canvas.drawText(name, startX-name_width/2,origin_y+(fontMetrics.bottom-fontMetrics.top+fontMetrics.leading ), paint);
+            //绘制y轴上的文字
+            String heightText =barModel.barHeight+"";
+            canvas.drawText(heightText,origin_x-mainPaint.measureText(heightText),origin_y-barHeight,mainPaint);
 
-            canvas.drawPoint(startX,origin_y + textBounds.height()+10,pointPaint);
+            //绘制x轴上的文字
+            mainPaint.setColor(Color.GRAY);
+            String name = barModel.barText;
+            int name_width = (int) mainPaint.measureText(name);
+            int startX = bar_x;
+            int textX = startX - name_width / 2;
+            float textY = origin_y + (fontMetrics.bottom - fontMetrics.top + fontMetrics.leading);
+            canvas.drawText(name, textX, textY, mainPaint);
+
+            canvas.drawPoint(textX, textY, pointPaint);
         }
+    }
+
+    /**
+     * 绘制x轴和y轴
+     *
+     * @param canvas
+     * @return
+     */
+    @NonNull
+    private void drawXY(Canvas canvas) {
+
+        mainPaint.setColor(Color.WHITE);
+        origin_x = originPaddingLeft;
+        origin_y = getHeight() - originPaddingBottom;
+        mainPaint.setStrokeWidth(3);
+        x_width = configXWidth();
+        y_height = configYHeight();
+        canvas.drawLine(origin_x, origin_y, origin_x + x_width, origin_y, mainPaint);//横轴
+        canvas.drawLine(origin_x, origin_y, origin_x, origin_y - y_height, mainPaint);//竖轴
+
+    }
+
+    /**
+     * 设置y轴高度
+     *
+     * @return
+     */
+    private int configYHeight() {
+        return getHeight() - 80;
+    }
+
+    /**
+     * 设置横轴宽度
+     *
+     * @return
+     */
+    private int configXWidth() {
+        return getWidth() - 80;
+    }
+
+    public static class BarModel {
+        public BarModel(int barHeight, String barText) {
+            this.barHeight = barHeight;
+            this.barText = barText;
+        }
+
+        public float barHeight;
+        public String barText;
     }
 }
