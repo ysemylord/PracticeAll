@@ -21,7 +21,7 @@ public class AnimationActivity extends AppCompatActivity {
     }
 
     public void scale(final View view) {
-        final ScaleAnimation scaleAnimationSmall=new ScaleAnimation(1,0.5f,1,0.5f, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+        final ScaleAnimation scaleAnimationSmall=new ScaleAnimation(1,0.5f,1,0.5f);
         scaleAnimationSmall.setDuration(1000);
         final ScaleAnimation scaleAnimationBig=new ScaleAnimation(0.5f,1,0.5f,1, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
         scaleAnimationBig.setDuration(1000);
