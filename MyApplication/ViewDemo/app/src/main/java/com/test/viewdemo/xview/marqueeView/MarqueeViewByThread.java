@@ -22,6 +22,7 @@ import com.test.viewdemo.util.CanStopLoopThread;
  * 线程的关闭不易控制
  * 需要借助CanStopLoopThread类
  *
+ *
  * @author xyb
  */
 
