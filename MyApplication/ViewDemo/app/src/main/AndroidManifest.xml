@@ -26,13 +26,18 @@
         <activity android:name=".coordinateDemo.AppBarLayoutActivity">
 
         </activity>
-        <activity android:name=".coordinateDemo.ViewCompatDemoActivity">
+        <activity android:name=".coordinateDemo.viewCompatOffsetDemo.ViewCompatDemoActivity">
+
+        </activity>
+
+        <activity android:name=".coordinateDemo.viewCompatOffsetDemo.ViewCompatOffsetHelperDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.test.viewdemo.coordinateDemo;
+package com.test.viewdemo.coordinateDemo.viewCompatOffsetDemo;
 
 import android.support.v4.view.ViewCompat;
 import android.view.View;
@@ -22,6 +22,9 @@ class ViewOffsetHelper {
         mView = view;
     }
 
+    /**
+     * 记录下出事情况下得偏移量
+     */
     public void onViewLayout() {
         // Now grab the intended top
         mLayoutTop = mView.getTop();

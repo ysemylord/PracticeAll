@@ -1,4 +1,4 @@
-package com.test.viewdemo.coordinateDemo;
+package com.test.viewdemo.coordinateDemo.viewCompatOffsetDemo;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewCompat;
