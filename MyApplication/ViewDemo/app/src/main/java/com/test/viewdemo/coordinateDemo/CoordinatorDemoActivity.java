@@ -1,9 +1,11 @@
-package com.test.viewdemo;
+package com.test.viewdemo.coordinateDemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.test.viewdemo.R;
 
 public class CoordinatorDemoActivity extends AppCompatActivity {
 

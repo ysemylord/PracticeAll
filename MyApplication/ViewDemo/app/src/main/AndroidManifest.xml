@@ -17,11 +17,16 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".AnimatorActivity">
-        </activity>
-        <activity android:name=".MarqueeViewActivity">
 
         </activity>
-        <activity android:name=".CoordinatorDemoActivity">
+        <activity android:name=".MarqueeViewActivity">
+        </activity>
+        <activity android:name=".coordinateDemo.CoordinatorDemoActivity">
+        </activity>
+        <activity android:name=".coordinateDemo.AppBarLayoutActivity">
+
+        </activity>
+        <activity android:name=".coordinateDemo.ViewCompatDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

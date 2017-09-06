@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -118,6 +119,12 @@ public class AnimatorActivity extends AppCompatActivity {
     public void tranlate(View view) {
         //mTargetView.getTranslationX();
         ObjectAnimator objectAnimatorTranlateX = ObjectAnimator.ofFloat(mTargetView, "translationX", mTargetView.getTranslationX(), 200, 400).setDuration(2000);
+        objectAnimatorTranlateX.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                Log.i(TAG, "onAnimationUpdate: "+mTargetView.getLeft());
+            }
+        });
         ObjectAnimator objectAnimatorTranlateX2 = ObjectAnimator.ofFloat(mTargetView, "translationX", 400).setDuration(2000);
         AnimatorSet objectAnimator = new AnimatorSet();
         objectAnimator.play(objectAnimatorTranlateX).before(objectAnimatorTranlateX2);
