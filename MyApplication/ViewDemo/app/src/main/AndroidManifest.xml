@@ -22,11 +22,13 @@
         <activity android:name=".coordinateDemo.viewCompatOffsetDemo.ViewCompatOffsetHelperDemoActivity">
         </activity>
         <activity android:name=".DragViewActivity">
-        </activity>
-        <activity android:name=".viewPager.PageViewUseActivity">
 
         </activity>
+        <activity android:name=".viewPager.PageViewUseActivity">
+        </activity>
         <activity android:name=".viewPager.FragmentAdapterUseActivity">
+        </activity>
+        <activity android:name=".SlideDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

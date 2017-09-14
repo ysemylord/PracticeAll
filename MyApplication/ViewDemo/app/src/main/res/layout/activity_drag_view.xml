@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.test.viewdemo.DragViewActivity">
 
-    <com.test.viewdemo.xview.DragView
+    <com.test.viewdemo.xview.CanDragedView
         android:layout_width="80dp"
         android:background="@color/colorPrimary"
         android:layout_height="80dp" />
