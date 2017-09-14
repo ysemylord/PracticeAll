@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.test.viewdemo.SlideDemoActivity">
-    <com.test.viewdemo.slideDemo.MyScrollView
-        android:layout_width="match_parent"
+    <com.test.viewdemo.slideDemo.MyScrollViewUserFling
+        android:layout_width="100dp"
         android:layout_height="match_parent">
         <View
             android:layout_width="100dp"
@@ -15,5 +15,16 @@
             android:background="@color/colorAccent"
             ></View>
 
-    </com.test.viewdemo.slideDemo.MyScrollView>
+    </com.test.viewdemo.slideDemo.MyScrollViewUserFling>
+
+    <com.test.viewdemo.slideDemo.MyScrollViewSpringback
+        android:layout_width="100dp"
+        android:layout_height="match_parent">
+        <View
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorPrimary"
+            ></View>
+
+    </com.test.viewdemo.slideDemo.MyScrollViewSpringback>
 </LinearLayout>
