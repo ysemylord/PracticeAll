@@ -58,8 +58,9 @@ public class MyScrollViewUserFling extends FrameLayout {
         int action = event.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                mPointActivtyId = event.getPointerId(0);
-                mLastY = event.getRawY();
+                int index= event.getActionIndex();
+                mPointActivtyId = event.getPointerId(index);
+                mLastY = event.getY();
                 if (mVelocityTracker == null) {
                     mVelocityTracker = VelocityTracker.obtain();
                 } else {
@@ -71,9 +72,10 @@ public class MyScrollViewUserFling extends FrameLayout {
                 mVelocityTracker.addMovement(event);
                 int pointIndex = event.findPointerIndex(mPointActivtyId);
                 if (pointIndex == -1) {
+                    Log.i(TAG, "onTouchEvent: error index");
                     break;
                 }
-                float y = event.getRawY();
+                float y = event.getY(pointIndex);
                 float dy = y - mLastY;
                 scrollBy(0, (int) -dy);
                 mLastY = y;
@@ -87,7 +89,7 @@ public class MyScrollViewUserFling extends FrameLayout {
                 Log.i(TAG, "onTouchEvent: " + yvel);
                 mScroller.fling(
                         getScrollX(), getScrollY(),
-                        0, (int) -yvel,
+                        0, (int) -yvel,//数据设为计算出的速度的相反值
                         0, 0,
                         -10000, 10000);
 

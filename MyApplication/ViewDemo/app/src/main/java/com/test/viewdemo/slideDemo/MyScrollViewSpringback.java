@@ -58,8 +58,9 @@ public class MyScrollViewSpringback extends FrameLayout {
         int action = event.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                mPointActivtyId = event.getPointerId(0);
-                mLastY = event.getRawY();
+                int index= event.getActionIndex();
+                mPointActivtyId = event.getPointerId(index);
+                mLastY = event.getY();
                 if (mVelocityTracker == null) {
                     mVelocityTracker = VelocityTracker.obtain();
                 } else {
@@ -73,9 +74,9 @@ public class MyScrollViewSpringback extends FrameLayout {
                 if (pointIndex == -1) {
                     break;
                 }
-                float y = event.getRawY();
+                float y = event.getY();
                 float dy = y - mLastY;
-                scrollBy(0, (int) -dy);
+                scrollBy(0, (int) -dy);//距离设置dy的相值
                 mLastY = y;
                 break;
             case MotionEvent.ACTION_UP:
