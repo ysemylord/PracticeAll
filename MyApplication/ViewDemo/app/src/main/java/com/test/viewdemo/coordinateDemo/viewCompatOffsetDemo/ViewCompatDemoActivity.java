@@ -43,6 +43,10 @@ public class ViewCompatDemoActivity extends AppCompatActivity {
     public void move(View view) {
         Log.i(TAG, ""+view.getTop());
         int desOffsetTop=Integer.parseInt(mOffsetValueEt.getText().toString().trim());
-        ViewCompat.offsetTopAndBottom(view,desOffsetTop-(view.getTop()- mInitTop));//offsetTopAndBottom在当前文字的基础上，偏移offset个像素，会导致getTop的变化
+        //offsetTopAndBottom 设置view在竖直方向上,在当前位置的基础上偏移offsett，改变的是getTop（）的值
+        //desOffsetTop - (view.getTop() - mInitTop)计算的值是在初始位置的基础上偏移desOffsetTop的值
+        int offset = desOffsetTop - (view.getTop() - mInitTop);
+        ViewCompat.offsetTopAndBottom(view, offset);
+        Log.i(TAG, "move: "+view.getScrollY());
     }
 }

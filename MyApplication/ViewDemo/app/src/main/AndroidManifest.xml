@@ -18,8 +18,11 @@
         <activity android:name=".MarqueeViewActivity"/>
         <activity android:name=".coordinateDemo.CoordinatorDemoActivity"/>
         <activity android:name=".coordinateDemo.AppBarLayoutActivity"/>
-        <activity android:name=".coordinateDemo.viewCompatOffsetDemo.ViewCompatDemoActivity"/>
+        <activity android:name=".coordinateDemo.viewCompatOffsetDemo.ViewCompatDemoActivity">
+
+        </activity>
         <activity android:name=".coordinateDemo.viewCompatOffsetDemo.ViewCompatOffsetHelperDemoActivity">
+
         </activity>
         <activity android:name=".DragViewActivity">
 
@@ -28,7 +31,7 @@
         </activity>
         <activity android:name=".viewPager.FragmentAdapterUseActivity">
         </activity>
-        <activity android:name=".SlideDemoActivity">
+        <activity android:name=".ScrollerDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

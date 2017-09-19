@@ -109,7 +109,9 @@ public class MyScrollViewUserFling extends FrameLayout {
     public void computeScroll() {
         super.computeScroll();
         if (mScroller.computeScrollOffset()) {
-            scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+            int currY = mScroller.getCurrY();
+            Log.i(TAG, "computeScroll: "+currY);
+            scrollTo(mScroller.getCurrX(), currY);
             invalidate();
             Log.i(TAG, "computeScroll: 重绘");
         }
