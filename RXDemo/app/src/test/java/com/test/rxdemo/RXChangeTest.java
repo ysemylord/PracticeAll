@@ -10,11 +10,14 @@ import rx.functions.Action1;
 import rx.functions.Func1;
 
 /**
- * RX变化
+ * RX map与flatMap变化
  */
 public class RXChangeTest {
 
-    //打印学生名字
+
+    /**
+     * map变化打印学生名字
+     */
     @Test
     public void pintStudentName() {
         Student[] students = new Student[]{
@@ -37,7 +40,12 @@ public class RXChangeTest {
                         Util.print(s);
                     }
                 });
-    }  @Test
+    }
+
+    /**
+     * flatMap变化打印学生课程
+     */
+    @Test
     public void pintStudentCourse() {
         Student[] students = new Student[]{
                 new Student("1"),
@@ -51,13 +59,13 @@ public class RXChangeTest {
                 .flatMap(new Func1<Student, Observable<Course>>() {
                     @Override
                     public Observable<Course> call(Student student) {
-                        Util.print("学生名: "+student.getName());
+                        Util.print("学生名: " + student.getName());
                         return Observable.from(student.getCourses());
                     }
                 }).subscribe(new Action1<Course>() {
             @Override
             public void call(Course course) {
-                Util.print("课程名: "+course.getCourseName());
+                Util.print("课程名: " + course.getCourseName());
             }
         });
     }
