@@ -20,6 +20,7 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view_demo);
         mRecyclerView= (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.addItemDecoration(new SimpleDecoration(10));
         for (int i = 0; i <20; i++) {
             mNameList.add(i+"");
         }
