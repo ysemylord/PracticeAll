@@ -19,19 +19,23 @@
         <activity android:name=".coordinateDemo.CoordinatorDemoActivity"/>
         <activity android:name=".coordinateDemo.AppBarLayoutActivity"/>
         <activity android:name=".coordinateDemo.viewCompatOffsetDemo.ViewCompatDemoActivity">
-
         </activity>
         <activity android:name=".coordinateDemo.viewCompatOffsetDemo.ViewCompatOffsetHelperDemoActivity">
-
         </activity>
         <activity android:name=".DragViewActivity">
-
         </activity>
         <activity android:name=".viewPager.PageViewUseActivity">
         </activity>
         <activity android:name=".viewPager.FragmentAdapterUseActivity">
         </activity>
         <activity android:name=".ScrollerDemoActivity">
+        </activity>
+        <activity
+            android:name=".practiceEditText.EditeTextActivity"
+            android:windowSoftInputMode="stateVisible">
+
+        </activity>
+        <activity android:name=".RecyclerViewDemo.RecyclerViewDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
