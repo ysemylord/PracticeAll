@@ -23,7 +23,7 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         for (int i = 0; i <20; i++) {
             mNameList.add(i+"");
         }
-        MyAdapter myAdapter=new MyAdapter(mNameList);
+        MyAdapterMultiType myAdapter=new MyAdapterMultiType(mNameList);
         mRecyclerView.setAdapter(myAdapter);
     }
 }
