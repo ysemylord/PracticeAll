@@ -1,5 +1,6 @@
 package com.test.viewdemo.RecyclerViewDemo;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,7 +21,10 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view_demo);
         mRecyclerView= (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.addItemDecoration(new SimpleDecoration(10));
+        MyDividerItemDecoration decor = new MyDividerItemDecoration(10);
+        decor.setDivider(Color.BLACK,10);
+        decor.setShowLast(false);
+        mRecyclerView.addItemDecoration(decor);
         for (int i = 0; i <20; i++) {
             mNameList.add(i+"");
         }
