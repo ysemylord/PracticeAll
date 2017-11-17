@@ -1,7 +1,6 @@
-package com.test.viewdemo.RecyclerViewDemo;
+package com.bilab.healthexpress.XItemDecoration;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
@@ -15,38 +14,66 @@ import android.view.View;
 
 public class MyDividerItemDecoration extends RecyclerView.ItemDecoration {
     private int mDividerHeight;
-    private boolean mShowLast = true;
-    private int mDividerColor=Color.BLACK;
+    private boolean mShowLastBottom = true;
+    private boolean mShowFirstTop = false;
+    ColorDrawable mColorDrawable = new ColorDrawable();
 
     public MyDividerItemDecoration() {
 
     }
 
-    public void setShowLast(boolean showLast) {
-        mShowLast = showLast;
+    /**
+     * 最后一项的底部是否显示分割线
+     * @param showLastBottom
+     */
+    public void setLastDiliver(boolean showLastBottom) {
+        mShowLastBottom = showLastBottom;
     }
 
-    public void setDivider(int dividerColor,int dividerHeight) {
-        mDividerColor = dividerColor;
-        mDividerHeight=dividerHeight;
+    /**
+     * 第一项的顶部是否显示分割线
+     * @param showFirstTop
+     */
+    public void setShowTopDiliver(boolean showFirstTop) {
+        mShowFirstTop = showFirstTop;
+    }
+
+    public void setDivider(int dividerColor, int dividerHeight) {
+        mDividerHeight = dividerHeight;
+        mColorDrawable.setColor(dividerColor);
+
     }
 
     @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
         super.onDrawOver(c, parent, state);
-        ColorDrawable colorDrawable = new ColorDrawable();
-        colorDrawable.setColor(mDividerColor);
+        if(mColorDrawable==null){
+            return;
+        }
         int left = parent.getPaddingLeft();
         int right = parent.getWidth() - parent.getPaddingRight();
         for (int i = 0; i < parent.getChildCount(); i++) {
-            if(i==parent.getChildCount()-1&&!mShowLast){
-                return;
-            }
+
+
             View itemView = parent.getChildAt(i);
-            int bottom = itemView.getBottom();
-            int top = bottom + mDividerHeight;
-            colorDrawable.setBounds(left, top, right, bottom);//设置Drawable的坐标
-            colorDrawable.draw(c);
+            int inAdapterPosition= parent.getChildAdapterPosition(itemView);
+            int lastItemPosition = parent.getAdapter().getItemCount() - 1;
+            if (notShowBottomDiliver(inAdapterPosition, lastItemPosition)) {
+
+            }else{
+                int bottom = itemView.getBottom();
+                int top = bottom + mDividerHeight;
+                mColorDrawable.setBounds(left, top, right, bottom);//设置Drawable的坐标
+                mColorDrawable.draw(c);
+
+            }
+
+            if(showTopDiliver(inAdapterPosition)){
+                int bottom = itemView.getTop();
+                int top = bottom - mDividerHeight;
+                mColorDrawable.setBounds(left, top, right, bottom);//设置Drawable的坐标
+                mColorDrawable.draw(c);
+            }
         }
     }
 
@@ -71,9 +98,23 @@ public class MyDividerItemDecoration extends RecyclerView.ItemDecoration {
          */
         int inAdapterPosition = parent.getChildAdapterPosition(view);
         int lastItemPosition = parent.getAdapter().getItemCount() - 1;
-        if (!mShowLast && inAdapterPosition == lastItemPosition) {
-            return;
+        if (notShowBottomDiliver(inAdapterPosition, lastItemPosition)) {//该view是最后一项且mShowLastBottom=false;
+            //不设置bottom
+        } else {
+            outRect.bottom = mDividerHeight;
         }
-        outRect.bottom = mDividerHeight;
+
+        if (showTopDiliver(inAdapterPosition)) {//该view是第一项，且mShowFirstTop=true;
+            outRect.top=mDividerHeight;
+        }
+
+    }
+
+    private boolean showTopDiliver(int inAdapterPosition) {
+        return inAdapterPosition == 0&&mShowFirstTop;
+    }
+
+    private boolean notShowBottomDiliver(int inAdapterPosition, int lastItemPosition) {
+        return inAdapterPosition == lastItemPosition&&!mShowLastBottom;
     }
 }

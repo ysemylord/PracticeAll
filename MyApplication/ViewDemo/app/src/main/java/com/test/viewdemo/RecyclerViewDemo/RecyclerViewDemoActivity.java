@@ -21,14 +21,15 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view_demo);
         mRecyclerView= (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        MyDividerItemDecoration decor = new MyDividerItemDecoration(10);
+        MyDividerItemDecoration decor = new MyDividerItemDecoration();
         decor.setDivider(Color.BLACK,10);
-        decor.setShowLast(false);
+        decor.setShowLastBottom(false);
+        decor.setShowFirstTop(true);
         mRecyclerView.addItemDecoration(decor);
         for (int i = 0; i <20; i++) {
             mNameList.add(i+"");
         }
-        MyAdapterMultiType myAdapter=new MyAdapterMultiType(mNameList);
+        MyAdapter myAdapter=new MyAdapter(mNameList);
         mRecyclerView.setAdapter(myAdapter);
     }
 }
