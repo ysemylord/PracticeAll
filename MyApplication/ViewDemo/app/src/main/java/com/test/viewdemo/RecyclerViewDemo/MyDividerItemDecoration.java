@@ -18,8 +18,8 @@ public class MyDividerItemDecoration extends RecyclerView.ItemDecoration {
     private boolean mShowLast = true;
     private int mDividerColor=Color.BLACK;
 
-    public MyDividerItemDecoration(int bottomMargin) {
-        this.mDividerHeight = bottomMargin;
+    public MyDividerItemDecoration() {
+
     }
 
     public void setShowLast(boolean showLast) {
