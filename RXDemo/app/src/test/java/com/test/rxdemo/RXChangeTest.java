@@ -37,7 +37,10 @@ public class RXChangeTest {
                         Util.print(s);
                     }
                 });
-    }  @Test
+
+    }
+
+    @Test
     public void pintStudentCourse() {
         Student[] students = new Student[]{
                 new Student("1"),
@@ -51,15 +54,16 @@ public class RXChangeTest {
                 .flatMap(new Func1<Student, Observable<Course>>() {
                     @Override
                     public Observable<Course> call(Student student) {
-                        Util.print("学生名: "+student.getName());
+                        Util.print("学生名: " + student.getName());
                         return Observable.from(student.getCourses());
                     }
-                }).subscribe(new Action1<Course>() {
-            @Override
-            public void call(Course course) {
-                Util.print("课程名: "+course.getCourseName());
-            }
-        });
+                })
+                .subscribe(new Action1<Course>() {
+                    @Override
+                    public void call(Course course) {
+                        Util.print("课程名: " + course.getCourseName());
+                    }
+                });
     }
 
 }
