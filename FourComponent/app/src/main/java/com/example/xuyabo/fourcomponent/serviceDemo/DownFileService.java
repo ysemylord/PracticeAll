@@ -1,4 +1,4 @@
-package com.example.xuyabo.fourcomponent;
+package com.example.xuyabo.fourcomponent.serviceDemo;
 
 import android.app.IntentService;
 import android.content.Intent;
