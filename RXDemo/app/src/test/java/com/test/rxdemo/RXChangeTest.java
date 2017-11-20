@@ -40,11 +40,17 @@ public class RXChangeTest {
                         Util.print(s);
                     }
                 });
+<<<<<<< HEAD
+
+    }
+
+=======
     }
 
     /**
      * flatMap变化打印学生课程
      */
+>>>>>>> 17f142219a0a677ecbbb36c36c56ca62a68a85ba
     @Test
     public void pintStudentCourse() {
         Student[] students = new Student[]{
@@ -62,12 +68,22 @@ public class RXChangeTest {
                         Util.print("学生名: " + student.getName());
                         return Observable.from(student.getCourses());
                     }
+<<<<<<< HEAD
+                })
+                .subscribe(new Action1<Course>() {
+                    @Override
+                    public void call(Course course) {
+                        Util.print("课程名: " + course.getCourseName());
+                    }
+                });
+=======
                 }).subscribe(new Action1<Course>() {
             @Override
             public void call(Course course) {
                 Util.print("课程名: " + course.getCourseName());
             }
         });
+>>>>>>> 17f142219a0a677ecbbb36c36c56ca62a68a85ba
     }
 
 }
