@@ -1,12 +1,12 @@
 package com.test.viewdemo.RecyclerViewDemo;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.test.viewdemo.R;
+import com.test.viewdemo.RecyclerViewDemo.itemDecoration.VSpaceItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +21,13 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view_demo);
         mRecyclerView= (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        MyDividerItemDecoration decor = new MyDividerItemDecoration();
+       /* VDividerItemDecoration decor = new VSpaceItemDecoration(10);
         decor.setDivider(Color.BLACK,10);
-        decor.setShowLastBottom(false);
-        decor.setShowFirstTop(true);
+        decor.setShowLastDiliver(false);
+        decor.setShowTopDiliver(true);*/
+
+        VSpaceItemDecoration decor = new VSpaceItemDecoration(10);
+
         mRecyclerView.addItemDecoration(decor);
         for (int i = 0; i <20; i++) {
             mNameList.add(i+"");

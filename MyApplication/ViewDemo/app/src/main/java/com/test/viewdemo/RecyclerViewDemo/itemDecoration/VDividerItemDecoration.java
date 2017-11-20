@@ -1,4 +1,4 @@
-package com.bilab.healthexpress.XItemDecoration;
+package com.test.viewdemo.RecyclerViewDemo.itemDecoration;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -12,13 +12,13 @@ import android.view.View;
  * @author xyb
  */
 
-public class MyDividerItemDecoration extends RecyclerView.ItemDecoration {
+public class VDividerItemDecoration extends RecyclerView.ItemDecoration {
     private int mDividerHeight;
     private boolean mShowLastBottom = true;
     private boolean mShowFirstTop = false;
     ColorDrawable mColorDrawable = new ColorDrawable();
 
-    public MyDividerItemDecoration() {
+    public VDividerItemDecoration() {
 
     }
 
@@ -26,7 +26,7 @@ public class MyDividerItemDecoration extends RecyclerView.ItemDecoration {
      * 最后一项的底部是否显示分割线
      * @param showLastBottom
      */
-    public void setLastDiliver(boolean showLastBottom) {
+    public void setShowLastDiliver(boolean showLastBottom) {
         mShowLastBottom = showLastBottom;
     }
 

@@ -8,6 +8,7 @@
     tools:context="com.test.viewdemo.RecyclerViewDemo.RecyclerViewDemoActivity">
      <android.support.v7.widget.RecyclerView
          android:id="@+id/recycler_view"
+         android:background="@android:color/darker_gray"
          android:layout_width="match_parent"
          android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 </LinearLayout>
