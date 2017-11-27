@@ -33,9 +33,11 @@
         <activity
             android:name=".practiceEditText.EditeTextActivity"
             android:windowSoftInputMode="stateVisible">
-
         </activity>
         <activity android:name=".RecyclerViewDemo.RecyclerViewDemoActivity">
+
+        </activity>
+        <activity android:name=".progressBarDemo.SeekBarDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

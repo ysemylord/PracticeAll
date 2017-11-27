@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.test.viewdemo.progressBarDemo.SeekBarDemoActivity">
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:progress="50"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+     <com.test.viewdemo.xview.myprogressBar.IndicateProgressView
+         android:layout_width="match_parent"
+         android:layout_height="30dp"
+         android:layout_marginLeft="10dp"
+         android:layout_marginRight="10dp"
+         android:id="@+id/indicate_progress_view"
+         android:layout_centerInParent="true"
+         app:backgroundColor="#f5f5f5"
+         app:startProgressColor="#f29310"
+         app:endProgressColor="#fd715a"/>
+    
+    <com.test.viewdemo.xview.NumberProgressBar
+        android:layout_width="match_parent"
+        android:id="@+id/number_progressbar"
+        android:layout_height="20dp"/>
+
+    <com.test.viewdemo.xview.myprogressBar.NumberInProgressView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/number_in_progress_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:background="@drawable/seek_bar_thumb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></View>
+</LinearLayout>

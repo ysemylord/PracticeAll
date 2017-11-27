@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.test.viewdemo.R;
-import com.test.viewdemo.RecyclerViewDemo.itemDecoration.VSpaceItemDecoration;
+import com.test.viewdemo.RecyclerViewDemo.itemDecoration.VSpaceItemDecor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         decor.setShowLastDiliver(false);
         decor.setShowTopDiliver(true);*/
 
-        VSpaceItemDecoration decor = new VSpaceItemDecoration(10);
+        VSpaceItemDecor decor = new VSpaceItemDecor(this,10);
 
         mRecyclerView.addItemDecoration(decor);
         for (int i = 0; i <20; i++) {
