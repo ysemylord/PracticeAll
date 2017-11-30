@@ -1,4 +1,4 @@
-package com.test.viewdemo;
+package com.test.viewdemo.viewAnimationDemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,12 @@ import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 
-public class AnimationActivity extends AppCompatActivity {
+import com.test.viewdemo.R;
+
+/**
+ * 视图动画基础
+ */
+public class BaseViewAnimationDemoActivity extends AppCompatActivity {
 
     View mCenterView;
     @Override

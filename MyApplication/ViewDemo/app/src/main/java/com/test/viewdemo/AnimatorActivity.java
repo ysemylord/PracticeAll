@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 
 /**
+ * 属性动画
  * 说明
  * --------------------------------------------------------------
  * 情况1:ObjectAnimator.ofFloat(mTargetView,"属性",值x)
