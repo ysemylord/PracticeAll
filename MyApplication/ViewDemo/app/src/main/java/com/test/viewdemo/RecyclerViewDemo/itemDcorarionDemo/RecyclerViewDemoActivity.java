@@ -1,4 +1,4 @@
-package com.test.viewdemo.RecyclerViewDemo;
+package com.test.viewdemo.RecyclerViewDemo.itemDcorarionDemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.test.viewdemo.R;
+import com.test.viewdemo.RecyclerViewDemo.MyAdapter;
 import com.test.viewdemo.RecyclerViewDemo.itemDecoration.VSpaceItemDecor;
 
 import java.util.ArrayList;
