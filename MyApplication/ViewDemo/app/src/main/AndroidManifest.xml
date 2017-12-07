@@ -27,17 +27,23 @@
         <activity
             android:name=".practiceEditText.EditeTextActivity"
             android:windowSoftInputMode="stateVisible"/>
-        <activity android:name=".RecyclerViewDemo.RecyclerViewDemoActivity"/>
+        <activity android:name=".RecyclerViewDemo.itemDcorarionDemo.RecyclerViewDemoActivity">
+        </activity>
         <activity android:name=".progressBarDemo.SeekBarDemoActivity">
         </activity>
         <activity android:name=".animationDrawable.AnimationTestOneActivity">
         </activity>
         <activity android:name=".animationDrawable.AnimationTestTwoActivity">
-
         </activity>
         <activity android:name=".viewAnimationDemo.LayoutAnimationDemoActivity">
+        </activity>
+        <activity android:name=".RecyclerViewDemo.AdapterDemo.DataBindingRecyclerViewActivity">
+
+        </activity>
+        <activity android:name=".TouchEventDemo.EventPassthroughActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
