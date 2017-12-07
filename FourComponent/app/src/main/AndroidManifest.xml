@@ -9,22 +9,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".serviceDemo.IntentServiceActivity">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+            -->
         </activity>
 
-        <service
-            android:name="com.example.xuyabo.fourcomponent.serviceDemo.DownFileService">
+        <service android:name=".serviceDemo.DownFileService" />
 
-        </service>
+        <activity android:name=".activityLaunchModel.FirstActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activityLaunchModel.StandardFirstActivity"
+            android:taskAffinity="com.example.xuyabo.fourcomponent.singleInstance1"
+
+            />
+        <activity
+            android:name=".activityLaunchModel.StandardSecondActivity"
+            android:taskAffinity="com.example.xuyabo.fourcomponent.sencond" />
+        <activity
+            android:name=".activityLaunchModel.NewTaskActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.example.xuyabo.fourcomponent.newTask1" />
+        <activity
+            android:name=".activityLaunchModel.SingleInstanceActivity"
+            android:taskAffinity="com.example.xuyabo.fourcomponent.singleInstance1"
+            android:launchMode="singleInstance"></activity>
     </application>
 
 </manifest>
