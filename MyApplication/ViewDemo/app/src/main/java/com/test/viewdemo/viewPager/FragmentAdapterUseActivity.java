@@ -1,5 +1,6 @@
 package com.test.viewdemo.viewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -83,5 +84,10 @@ public class FragmentAdapterUseActivity extends AppCompatActivity {
         String text0 = mDatas.get(0);
         mDatas.set(0,text0+"改");
         mFragmentPagerAdapter.notifyDataSetChanged();
+    }
+
+    public void skip(View view) {
+        Intent intent=new Intent(this,FragmentAdapterUseActivity.class);
+        startActivity(intent);
     }
 }

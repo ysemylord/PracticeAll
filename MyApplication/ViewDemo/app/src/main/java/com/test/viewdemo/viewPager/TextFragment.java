@@ -3,13 +3,13 @@ package com.test.viewdemo.viewPager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.test.viewdemo.BaseFragment;
 import com.test.viewdemo.R;
 
 import java.util.Random;
@@ -17,7 +17,7 @@ import java.util.Random;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class TextFragment extends Fragment {
+public class TextFragment extends BaseFragment {
     private static final String TAG = "TextFragment";
     @Bind(R.id.textView1)
     TextView mTextView1;
@@ -37,6 +37,12 @@ public class TextFragment extends Fragment {
 
     public TextFragment() {
         Log.i(TAG, "TextFragment 创建 ");
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i(TAG, "onCreate: "+getFragmentManager().getFragments().size());
     }
 
     @Nullable
