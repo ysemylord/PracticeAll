@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -19,7 +20,7 @@ public class PageViewUseActivity extends AppCompatActivity {
     ViewPager mViewPager;
     PagerAdapter mPagerAdapter;
     List<TextView> mViews;
-
+    private static final String TAG = "PageViewUseActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,7 @@ public class PageViewUseActivity extends AppCompatActivity {
         mViewPager.setAdapter(mPagerAdapter=new PagerAdapter() {
             @Override
             public int getCount() {
+                Log.i(TAG, "getCount ");
                 return mViews.size();
             }
 
@@ -59,6 +61,7 @@ public class PageViewUseActivity extends AppCompatActivity {
              */
             @Override
             public boolean isViewFromObject(View view, Object object) {
+                Log.i(TAG, "isViewFromObject: ");
                 return view==object;
             }
 
@@ -71,6 +74,7 @@ public class PageViewUseActivity extends AppCompatActivity {
              */
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
+                Log.i(TAG, "instantiateItem: ");
                 View view = mViews.get(position);
                 container.addView(view);
                 return view;//将page的view作为page的Object
@@ -78,6 +82,7 @@ public class PageViewUseActivity extends AppCompatActivity {
 
             @Override
             public void destroyItem(ViewGroup container, int position, Object object) {
+                Log.i(TAG, "destroyItem: ");
                 container.removeView(mViews.get(position));
             }
         });

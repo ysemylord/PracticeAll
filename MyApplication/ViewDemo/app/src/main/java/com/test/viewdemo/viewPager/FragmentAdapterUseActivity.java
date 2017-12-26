@@ -36,12 +36,21 @@ public class FragmentAdapterUseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fragment_adapter_use);
         mViewPager = (ViewPager) findViewById(R.id.view_page);
         mViewPager.setAdapter(mFragmentPagerAdapter=new FragmentPagerAdapter(getSupportFragmentManager()) {
+            /**
+             * 必须继承该方法
+             * @param position
+             * @return
+             */
             @Override
             public Fragment getItem(int position) {
                 Log.i(TAG, "getItem:"+(position+1));
                 return new TextFragment();
             }
 
+            /**
+             * 必须继承该方法
+             * @return
+             */
             @Override
             public int getCount() {
                 return mDatas.size();

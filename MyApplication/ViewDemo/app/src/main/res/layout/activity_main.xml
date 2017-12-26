@@ -11,24 +11,9 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.test.viewdemo.MainActivity">
 
-<!--    <LinearLayout
-        android:background="@color/colorAccent"
-        android:orientation="horizontal"
-        android:id="@+id/text_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></LinearLayout>-->
 
     <com.test.viewdemo.xview.BarGraph
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
- <!--   <com.test.viewdemo.xview.DragView
-        android:layout_width="50dp"
-        android:background="#000000"
-        android:layout_height="50dp" />
 
-    <ImageView
-        android:text="Hello World!"
-        android:id="@+id/circle_drawable_test"
-        android:layout_width="50dp"
-        android:layout_height="50dp" /-->>
 </LinearLayout>

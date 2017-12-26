@@ -1,16 +1,30 @@
 package com.test.viewdemo.viewPager;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class TextFragment extends  android.support.v4.app.Fragment{
-    private static final String TAG="TextFragment";
+import com.test.viewdemo.R;
+
+import java.util.Random;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class TextFragment extends Fragment {
+    private static final String TAG = "TextFragment";
+    @Bind(R.id.textView1)
+    TextView mTextView1;
+    @Bind(R.id.textView2)
+    TextView mTextView2;
     private String mText;
+    Handler mHandler=new Handler();
 
     public String getText() {
         return mText;
@@ -28,8 +42,43 @@ public class TextFragment extends  android.support.v4.app.Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        TextView textView=new TextView(getContext());
-        textView.setText(mText);
-        return textView;
+        View rootView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_layout, container, false);
+        ButterKnife.bind(this, rootView);
+        mTextView1.setText(mText);
+        return rootView;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {//fragment每次可见时调用
+
+               new Thread(new Runnable() {
+                   @Override
+                   public void run() {
+                       try {
+                           Thread.sleep(100);//模拟网络请求
+                       } catch (InterruptedException e) {
+                           e.printStackTrace();
+                       }
+                       Log.i(TAG, "run: setUserVisibleHint true");
+                       mHandler.post(new Runnable() {
+                           @Override
+                           public void run() {
+                               Log.i(TAG, "run: setText");
+                              mTextView2.setText(new Random().nextInt(100)+"");
+                           }
+                       });
+                   }
+               }).start();
+        } else {
+
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 }
