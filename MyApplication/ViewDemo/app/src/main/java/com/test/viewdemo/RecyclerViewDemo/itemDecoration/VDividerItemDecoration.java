@@ -61,8 +61,8 @@ public class VDividerItemDecoration extends RecyclerView.ItemDecoration {
             if (notShowBottomDiliver(inAdapterPosition, lastItemPosition)) {
 
             }else{
-                int bottom = itemView.getBottom();
-                int top = bottom + mDividerHeight;
+                int top = itemView.getBottom();
+                int bottom = top + mDividerHeight;
                 mColorDrawable.setBounds(left, top, right, bottom);//设置Drawable的坐标
                 mColorDrawable.draw(c);
 

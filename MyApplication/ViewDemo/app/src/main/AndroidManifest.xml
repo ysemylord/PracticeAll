@@ -24,11 +24,6 @@
         <activity android:name=".viewPager.PageViewUseActivity">
         </activity>
         <activity android:name=".viewPager.FragmentAdapterUseActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".ScrollerDemoActivity"/>
         <activity
@@ -36,19 +31,31 @@
             android:windowSoftInputMode="stateVisible"/>
         <activity android:name=".RecyclerViewDemo.itemDcorarionDemo.RecyclerViewDemoActivity"/>
         <activity android:name=".progressBarDemo.SeekBarDemoActivity"/>
-        <activity android:name=".animationDrawable.AnimationTestOneActivity"/>
+        <activity android:name=".animationDrawable.AnimationTestOneActivity">
+
+        </activity>
         <activity android:name=".animationDrawable.AnimationTestTwoActivity"/>
         <activity android:name=".viewAnimationDemo.LayoutAnimationDemoActivity"/>
         <activity android:name=".RecyclerViewDemo.AdapterDemo.DataBindingRecyclerViewActivity"/>
         <activity android:name=".TouchEventDemo.EventPassthroughActivity"/>
-        <activity android:name=".measureDemo.MeasureDemoActivity"/>
+        <activity android:name=".measureDemo.MeasureDemoActivity">
+        </activity>
         <activity android:name=".BaseDraw.LineActivity">
         </activity>
         <activity android:name=".RecyclerViewDemo.scrollDemo.RecyclerViewScrollDemoActivity">
         </activity>
-        <activity android:name=".viewPager.verifyFragmentManager.VerifyFragmentManagerActivity">
-        </activity>
         <activity android:name=".viewPager.verifyFragmentManager.VerifyFragmentActivity">
+        </activity>
+        <activity android:name=".viewPager.verifyFragmentManager.VerifyFragmentTranctionActivity">
+        </activity>
+        <activity android:name=".practiceEditText.TextViewDemoActivity">
+        </activity>
+        <activity android:name=".drawableDemo.DrawableDemoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 
