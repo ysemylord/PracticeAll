@@ -40,11 +40,6 @@
             android:launchMode="singleInstance"
             android:taskAffinity="com.example.xuyabo.fourcomponent.singleInstance1"/>
         <activity android:name=".serveiDemo.ServiceDemoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
 
         <service
@@ -53,7 +48,19 @@
             android:exported="true">
         </service>
 
-        <activity android:name=".serveiDemo.ServiceDemo2Activity">
+        <activity
+            android:name=".activityStyle.TranslucentActivity"
+            android:theme="@style/Theme.Transparent">
+
+        </activity>
+        <activity
+            android:theme="@style/AppTheme.Transparent"
+            android:name=".activityStyle.TranslucentAppcompatActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 
