@@ -32,7 +32,6 @@
         <activity android:name=".RecyclerViewDemo.itemDcorarionDemo.RecyclerViewDemoActivity"/>
         <activity android:name=".progressBarDemo.SeekBarDemoActivity"/>
         <activity android:name=".animationDrawable.AnimationTestOneActivity">
-
         </activity>
         <activity android:name=".animationDrawable.AnimationTestTwoActivity"/>
         <activity android:name=".viewAnimationDemo.LayoutAnimationDemoActivity"/>
@@ -51,6 +50,32 @@
         <activity android:name=".practiceEditText.TextViewDemoActivity">
         </activity>
         <activity android:name=".drawableDemo.DrawableDemoActivity">
+        </activity>
+        <activity android:name=".notificationDemo.NotificationDemoActivity">
+        </activity>
+        <activity
+            android:name=".notificationDemo.TaskStackBuilderActivity"
+            android:parentActivityName=".drawableDemo.DrawableDemoActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".drawableDemo.DrawableDemoActivity"/>
+        </activity>
+        <activity
+            android:name=".notificationDemo.InSingleTaskActivity"
+            android:excludeFromRecents="true"
+            android:taskAffinity=".testAffinity">
+        </activity>
+        <activity android:name=".practiceEditText.SpannableDemoActivity">
+        </activity>
+        <activity android:name=".practiceEditText.EmotionTextViewActivity">
+        </activity>
+        <activity
+            android:name=".animationDemo.MatrixDemoActivity"
+            android:label="@string/title_activity_matrix_demo"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".DrawableTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -22,6 +22,7 @@ public class DrawableDemoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawable_demo);
+        setTitle("DrawableDemoActivity");
         ButterKnife.bind(this);
         ClipDrawable clipDrawable= (ClipDrawable) mClipBgTextview.getBackground();
         clipDrawable.setLevel(10000);
