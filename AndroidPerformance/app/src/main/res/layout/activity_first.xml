@@ -5,16 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    tools:context="com.example.xuyabo.androidperformance.smoothDetection.SMTestActivity">
+    tools:context="com.example.xuyabo.androidperformance.smoothDetection.systraceUse.FirstActivity">
 
-    <TextView
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="233333"
+        android:layout_marginStart="120dp"
+        android:text="跳转"
+        android:onClick="skip"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        tools:layout_editor_absoluteY="32dp"/>
 </android.support.constraint.ConstraintLayout>
-
