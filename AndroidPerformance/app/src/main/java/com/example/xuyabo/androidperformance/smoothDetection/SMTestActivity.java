@@ -4,7 +4,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Display;
 
 import com.example.xuyabo.androidperformance.R;
 
@@ -18,9 +17,7 @@ public class SMTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smtest);
-        DisplayInfo di = DisplayManagerGlobal.getInstance().getDisplayInfo(
-                Display.DEFAULT_DISPLAY);
-        di.getMode().getRefreshRate();
+
     }
 }
 
