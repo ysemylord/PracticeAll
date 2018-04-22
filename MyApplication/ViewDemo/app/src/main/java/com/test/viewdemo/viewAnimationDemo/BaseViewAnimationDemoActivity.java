@@ -98,7 +98,7 @@ public class BaseViewAnimationDemoActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                 mCenterView.startAnimation(translateAnimationReturn);
+                mCenterView.startAnimation(translateAnimationReturn);
             }
 
             @Override
@@ -123,7 +123,7 @@ public class BaseViewAnimationDemoActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                 mCenterView.startAnimation(translateAnimationReturn);
+                mCenterView.startAnimation(translateAnimationReturn);
             }
 
             @Override

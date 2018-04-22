@@ -1,0 +1,33 @@
+package com.test.viewdemo.animationDemo;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Button;
+
+import com.test.viewdemo.R;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class MatrixDemoActivity extends AppCompatActivity {
+    private static final String TAG = "MatrixDemoActivity";
+    @Bind(R.id.btn)
+    Button mBtn;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_matrix_demo);
+        ButterKnife.bind(this);
+
+    }
+
+    @OnClick(R.id.btn)
+    public void onViewClicked() {
+        Log.i(TAG, "onViewClicked");
+    }
+
+
+}

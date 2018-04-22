@@ -1,13 +1,11 @@
-package com.test.viewdemo.RecyclerViewDemo.itemDcorarionDemo;
+package com.test.viewdemo.RecyclerViewDemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.test.viewdemo.R;
-import com.test.viewdemo.RecyclerViewDemo.MyAdapter;
-import com.test.viewdemo.RecyclerViewDemo.itemDecoration.VSpaceItemDecor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,19 +19,22 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view_demo);
         mRecyclerView= (RecyclerView) findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        StaggeredGridLayoutManager staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+
+        mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
        /* VDividerItemDecoration decor = new VSpaceItemDecoration(10);
         decor.setDivider(Color.BLACK,10);
         decor.setShowLastDiliver(false);
         decor.setShowTopDiliver(true);*/
 
-        VSpaceItemDecor decor = new VSpaceItemDecor(this,10);
+        //VSpaceItemDecor decor = new VSpaceItemDecor(this,10);
 
-        mRecyclerView.addItemDecoration(decor);
+        //mRecyclerView.addItemDecoration(decor);
         for (int i = 0; i <20; i++) {
             mNameList.add(i+"");
         }
-        MyAdapter myAdapter=new MyAdapter(mNameList);
+        MyAdapterMultiTypeForStaggeredGridLayoutManager myAdapter=new MyAdapterMultiTypeForStaggeredGridLayoutManager(mNameList);
         mRecyclerView.setAdapter(myAdapter);
     }
 }
