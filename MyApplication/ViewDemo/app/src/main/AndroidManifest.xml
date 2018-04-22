@@ -13,7 +13,8 @@
         <activity
             android:name=".viewAnimationDemo.BaseViewAnimationDemoActivity"
             android:label="@string/title_activity_animation"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity android:name=".AnimatorActivity"/>
         <activity android:name=".MarqueeViewActivity"/>
         <activity android:name=".coordinateDemo.CoordinatorDemoActivity"/>
@@ -21,15 +22,17 @@
         <activity android:name=".coordinateDemo.viewCompatOffsetDemo.ViewCompatDemoActivity"/>
         <activity android:name=".coordinateDemo.viewCompatOffsetDemo.ViewCompatOffsetHelperDemoActivity"/>
         <activity android:name=".DragViewActivity"/>
-        <activity android:name=".viewPager.PageViewUseActivity">
+        <activity android:name=".contentViewPager.changeData.PageViewUseActivity">
         </activity>
-        <activity android:name=".viewPager.FragmentAdapterUseActivity">
+        <activity android:name=".contentViewPager.changeData.FragmentAdapterUseActivity">
+
         </activity>
         <activity android:name=".ScrollerDemoActivity"/>
         <activity
             android:name=".practiceEditText.EditeTextActivity"
             android:windowSoftInputMode="stateVisible"/>
-        <activity android:name=".RecyclerViewDemo.itemDcorarionDemo.RecyclerViewDemoActivity"/>
+        <activity android:name=".RecyclerViewDemo.RecyclerViewDemoActivity">
+        </activity>
         <activity android:name=".progressBarDemo.SeekBarDemoActivity"/>
         <activity android:name=".animationDrawable.AnimationTestOneActivity">
         </activity>
@@ -43,9 +46,9 @@
         </activity>
         <activity android:name=".RecyclerViewDemo.scrollDemo.RecyclerViewScrollDemoActivity">
         </activity>
-        <activity android:name=".viewPager.verifyFragmentManager.VerifyFragmentActivity">
+        <activity android:name=".contentViewPager.verifyFragmentManager.VerifyFragmentActivity">
         </activity>
-        <activity android:name=".viewPager.verifyFragmentManager.VerifyFragmentTranctionActivity">
+        <activity android:name=".contentViewPager.verifyFragmentManager.VerifyFragmentTranctionActivity">
         </activity>
         <activity android:name=".practiceEditText.TextViewDemoActivity">
         </activity>
@@ -73,9 +76,15 @@
             android:name=".animationDemo.MatrixDemoActivity"
             android:label="@string/title_activity_matrix_demo"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
         <activity android:name=".DrawableTestActivity">
+        </activity>
+        <activity android:name=".SimpleViewTestActivity">
+        </activity>
+        <activity android:name=".dataBindingDemo.DataBindingDemoActivity">
+        </activity>
+
+        <activity android:name=".viewPager.extension.ViewPagerTabLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

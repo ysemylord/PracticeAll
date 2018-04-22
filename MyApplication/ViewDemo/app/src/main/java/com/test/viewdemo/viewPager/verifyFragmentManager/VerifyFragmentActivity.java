@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.test.viewdemo.R;
-import com.test.viewdemo.viewPager.TextFragment;
+import com.test.viewdemo.viewPager.changeData.TextFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

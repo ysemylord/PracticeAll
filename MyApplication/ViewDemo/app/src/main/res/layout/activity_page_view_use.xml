@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.test.viewdemo.viewPager.PageViewUseActivity">
+    tools:context="com.test.viewdemo.contentViewPager.changeData.PageViewUseActivity">
     <Button
         android:layout_width="wrap_content"
         android:text="改变1"

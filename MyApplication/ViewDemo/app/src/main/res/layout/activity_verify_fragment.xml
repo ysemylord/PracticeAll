@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.test.viewdemo.viewPager.verifyFragmentManager.VerifyFragmentActivity">
+    tools:context="com.test.viewdemo.contentViewPager.verifyFragmentManager.VerifyFragmentActivity">
   <Button
       android:onClick="skip"
       android:text="skip"
