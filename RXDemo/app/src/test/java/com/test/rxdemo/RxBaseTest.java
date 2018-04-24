@@ -7,16 +7,10 @@ import rx.Observer;
 import rx.Subscriber;
 import rx.functions.Action1;
 
-import static org.junit.Assert.assertEquals;
-
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
  */
 public class RxBaseTest {
-    @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
-    }
 
     //create()创建被观察者
     @Test
@@ -56,7 +50,7 @@ public class RxBaseTest {
     }
 
 
-    void print(String string) {
+    public static void print(String string) {
         System.out.println(string);
     }
 

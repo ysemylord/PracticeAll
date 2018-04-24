@@ -15,11 +15,13 @@
         <activity android:name=".smoothDetection.SMTestActivity">
         </activity>
         <activity android:name=".smoothDetection.systraceUse.FirstActivity">
-
         </activity>
         <activity android:name=".smoothDetection.systraceUse.UseTraceActivity">
         </activity>
         <activity android:name=".mesureTimeDemo.MeasureTimeDemoActivity">
+
+        </activity>
+        <activity android:name=".smoothDetection.useViewStub.ViewStubDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

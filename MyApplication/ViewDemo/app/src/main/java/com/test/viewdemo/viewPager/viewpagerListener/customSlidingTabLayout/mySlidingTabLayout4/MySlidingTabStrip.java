@@ -1,4 +1,4 @@
-package com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlidingTabLayout2;
+package com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlidingTabLayout4;
 
 import android.content.Context;
 import android.graphics.Canvas;

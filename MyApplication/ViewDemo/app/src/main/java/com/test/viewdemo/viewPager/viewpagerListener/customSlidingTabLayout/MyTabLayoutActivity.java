@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import com.test.viewdemo.R;
 import com.test.viewdemo.viewPager.viewpagerListener.SimpleViewPagerAdapter;
-import com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlindingTabLayout3.MySlindingTabLayout;
+import com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlindingTabLayout2.MySlindingTabLayout;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -18,7 +18,7 @@ public class MyTabLayoutActivity extends AppCompatActivity {
     @Bind(R.id.horizontal_scrollView)
     MySlindingTabLayout mHorizontalScrollView;
     @Bind(R.id.tab)
-    com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlindingTabLayout4.MySlindingTabLayout mTav;
+    com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlindingTabLayout3.MySlindingTabLayout mTav;
     @Bind(R.id.view_page)
     ViewPager mViewPage;
 

@@ -44,4 +44,14 @@
             android:layout_height="wrap_content"
             android:text="in LinearLayout"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.example.xuyabo.androidperformance.mesureTimeDemo.ShowMeasureTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="in wrap LinearLayout"/>
+    </LinearLayout>
 </com.example.xuyabo.androidperformance.mesureTimeDemo.ShowMeasureTimeLinearLayout>

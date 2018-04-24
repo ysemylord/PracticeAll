@@ -1,4 +1,4 @@
-package com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlidingTabLayout2;
+package com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlidingTabLayout4;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,24 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 
-/**
- * 添加绑定ViewPager的功能
- * 注意点
- * 1. MySlidingTabStrip要设置setWillNotDraw(false);不然即便调用了invalidate也不会导致onDraw的调用
- * 难点
- * 1. MySlidingTabStrip指示器位置的确定
- * <p>
- * 涉及到的信息组块
- * 1.ViewPagerAdater
- * + getTitleString
- * + getCount()
- * <p>
- * 2.HorizontalScrollView scrollTo
- * <p>
- * 3.Canvas.drawLine
- * <p>
- * 4.数学计算
- */
+
 
 public class MySlindingTabLayout extends HorizontalScrollView {
     //之所以要加上一个mViewContainer是因为HorizontalScrollView只能存放一个childView,所以这里mViewContainer作为新添加进的Child的容器

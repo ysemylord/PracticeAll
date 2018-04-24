@@ -25,7 +25,6 @@
         <activity android:name=".contentViewPager.changeData.PageViewUseActivity">
         </activity>
         <activity android:name=".contentViewPager.changeData.FragmentAdapterUseActivity">
-
         </activity>
         <activity android:name=".ScrollerDemoActivity"/>
         <activity
@@ -83,8 +82,16 @@
         </activity>
         <activity android:name=".dataBindingDemo.DataBindingDemoActivity">
         </activity>
-
         <activity android:name=".viewPager.extension.ViewPagerTabLayoutActivity">
+        </activity>
+        <activity android:name=".viewPager.viewpagerListener.ViewPagerLisenterActivity">
+        </activity>
+        <activity android:name=".viewPager.viewpagerListener.ListenerUseActivity">
+        </activity>
+        <activity android:name=".canvaseDemo.BaseCanvaseActivity">
+
+        </activity>
+        <activity android:name=".viewPager.viewpagerListener.customSlidingTabLayout.MyTabLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

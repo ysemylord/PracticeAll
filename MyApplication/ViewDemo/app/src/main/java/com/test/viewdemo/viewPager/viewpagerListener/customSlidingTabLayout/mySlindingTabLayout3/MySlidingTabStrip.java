@@ -8,18 +8,18 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-/**
- * 在被点击的按钮下面画一条指示线
- */
 
 public class MySlidingTabStrip extends LinearLayout {
-    private Paint mPaint=new Paint();
+    private Paint mPaint = new Paint();
     private int mPositionClicked;
+    private float mPositionOffset;
+
     {
         mPaint.setStrokeWidth(10);
     }
+
     public MySlidingTabStrip(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public MySlidingTabStrip(Context context, @Nullable AttributeSet attrs) {
@@ -29,17 +29,32 @@ public class MySlidingTabStrip extends LinearLayout {
         setWillNotDraw(false);
     }
 
-    public void onTabChanged(int positionClick){
-        mPositionClicked=positionClick;
+    public void onViewPagerChange(int positionChoosed, float positionOffset) {
+        mPositionClicked = positionChoosed;
+        mPositionOffset = positionOffset;
         invalidate();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        View child=getChildAt(mPositionClicked);
-        int left=child.getLeft();
-        int right=child.getRight();
-        canvas.drawLine(left,child.getBottom(),right,child.getBottom(),mPaint);
+        View child = getChildAt(mPositionClicked);
+        View nextChild = getChildAt(mPositionClicked+1);
+
+        int left = child.getLeft();
+        int right = child.getRight();
+        // Draw the selection partway between the tabs
+        //从SlidingTabLayout copy过来的，这个计算太巧妙了
+        if(mPositionClicked<getChildCount()-1) {
+            View nextTitle = getChildAt(mPositionClicked + 1);
+            int nextTitleLeft = nextTitle.getLeft();
+            left = (int) (mPositionOffset * nextTitleLeft +
+                    (1.0f - mPositionOffset) * left);
+            int nextTitleRight = nextTitle.getRight();
+            right = (int) (mPositionOffset * nextTitleRight +
+                    (1.0f - mPositionOffset) * right);
+        }
+
+        canvas.drawLine(left, child.getBottom(), right, child.getBottom(), mPaint);
     }
 }

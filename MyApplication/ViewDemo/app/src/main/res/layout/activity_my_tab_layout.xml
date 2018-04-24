@@ -8,12 +8,12 @@
     android:orientation="vertical"
     tools:context="com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.MyTabLayoutActivity">
 
-    <com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlindingTabLayout3.MySlindingTabLayout
+    <com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlindingTabLayout2.MySlindingTabLayout
         android:id="@+id/horizontal_scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlindingTabLayout3.MySlindingTabLayout>
+        android:layout_height="wrap_content"></com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlindingTabLayout2.MySlindingTabLayout>
 
-    <com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlindingTabLayout4.MySlindingTabLayout
+    <com.test.viewdemo.viewPager.viewpagerListener.customSlidingTabLayout.mySlindingTabLayout3.MySlindingTabLayout
         android:id="@+id/tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
