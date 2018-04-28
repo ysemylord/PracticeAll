@@ -22,10 +22,6 @@
         <activity android:name=".coordinateDemo.viewCompatOffsetDemo.ViewCompatDemoActivity"/>
         <activity android:name=".coordinateDemo.viewCompatOffsetDemo.ViewCompatOffsetHelperDemoActivity"/>
         <activity android:name=".DragViewActivity"/>
-        <activity android:name=".contentViewPager.changeData.PageViewUseActivity">
-        </activity>
-        <activity android:name=".contentViewPager.changeData.FragmentAdapterUseActivity">
-        </activity>
         <activity android:name=".ScrollerDemoActivity"/>
         <activity
             android:name=".practiceEditText.EditeTextActivity"
@@ -44,10 +40,6 @@
         <activity android:name=".BaseDraw.LineActivity">
         </activity>
         <activity android:name=".RecyclerViewDemo.scrollDemo.RecyclerViewScrollDemoActivity">
-        </activity>
-        <activity android:name=".contentViewPager.verifyFragmentManager.VerifyFragmentActivity">
-        </activity>
-        <activity android:name=".contentViewPager.verifyFragmentManager.VerifyFragmentTranctionActivity">
         </activity>
         <activity android:name=".practiceEditText.TextViewDemoActivity">
         </activity>
@@ -89,9 +81,13 @@
         <activity android:name=".viewPager.viewpagerListener.ListenerUseActivity">
         </activity>
         <activity android:name=".canvaseDemo.BaseCanvaseActivity">
-
         </activity>
         <activity android:name=".viewPager.viewpagerListener.customSlidingTabLayout.MyTabLayoutActivity">
+        </activity>
+        <activity android:name=".scrollViewDemo.ClipToPaddingActivity">
+
+        </activity>
+        <activity android:name=".nestedScrollDemo.BaseNestedScrollDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

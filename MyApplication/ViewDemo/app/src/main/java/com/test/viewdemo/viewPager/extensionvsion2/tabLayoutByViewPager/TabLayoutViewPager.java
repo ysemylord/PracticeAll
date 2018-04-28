@@ -1,4 +1,4 @@
-package com.test.viewdemo.viewPager.extensionvsion2.extension;
+package com.test.viewdemo.viewPager.extensionvsion2.tabLayoutByViewPager;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

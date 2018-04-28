@@ -19,7 +19,7 @@ public class ViewPagerTabLayoutActivity extends AppCompatActivity {
     @Bind(R.id.content_view_pager)
     ViewPager mContentViewPager;
     @Bind(R.id.tab_view_pager)
-    com.test.viewdemo.viewPager.extensionvsion2.extension.TabLayoutViewPager mTabViewPager;
+    com.test.viewdemo.viewPager.extensionvsion2.tabLayoutByViewPager.TabLayoutViewPager mTabViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

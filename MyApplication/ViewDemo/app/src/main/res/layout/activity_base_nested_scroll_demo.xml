@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.test.viewdemo.nestedScrollDemo.BaseNestedScrollDemoActivity">
+
+    <com.test.viewdemo.nestedScrollDemo.NestedParentView
+        android:layout_marginTop="50dp"
+        android:layout_width="100dp"
+        android:background="@color/colorAccent"
+        android:layout_height="200dp">
+
+        <com.test.viewdemo.nestedScrollDemo.NestedChildView
+            android:layout_marginTop="100dp"
+            android:layout_width="100dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="100dp"/>
+    </com.test.viewdemo.nestedScrollDemo.NestedParentView>
+
+    <com.test.viewdemo.nestedScrollDemo.MyNestedScrollParentL
+        android:layout_width="100dp"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:background="@color/colorAccent"
+            android:layout_height="100dp"/>
+        <TextView
+            android:text="标题"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+        <com.test.viewdemo.nestedScrollDemo.MyNestedScrollChildL
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/show_content"
+                android:layout_height="1000dp"/>
+        </com.test.viewdemo.nestedScrollDemo.MyNestedScrollChildL>
+    </com.test.viewdemo.nestedScrollDemo.MyNestedScrollParentL>
+
+    <com.test.viewdemo.nestedScrollDemo.practice.MyNestedScrollingParent
+        android:layout_width="100dp"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:background="@color/colorAccent"
+            android:layout_height="100dp"/>
+        <com.test.viewdemo.nestedScrollDemo.practice.MyNestedScrollingChild
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/show_content2"
+                android:layout_height="match_parent"/>
+        </com.test.viewdemo.nestedScrollDemo.practice.MyNestedScrollingChild>
+    </com.test.viewdemo.nestedScrollDemo.practice.MyNestedScrollingParent>
+</LinearLayout>

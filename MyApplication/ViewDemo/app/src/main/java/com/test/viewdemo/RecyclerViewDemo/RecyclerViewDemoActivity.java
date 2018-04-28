@@ -20,7 +20,7 @@ public class RecyclerViewDemoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view_demo);
         mRecyclerView= (RecyclerView) findViewById(R.id.recycler_view);
 
-        StaggeredGridLayoutManager staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        StaggeredGridLayoutManager staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL){};
 
         mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
        /* VDividerItemDecoration decor = new VSpaceItemDecoration(10);
