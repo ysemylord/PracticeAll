@@ -85,9 +85,11 @@
         <activity android:name=".viewPager.viewpagerListener.customSlidingTabLayout.MyTabLayoutActivity">
         </activity>
         <activity android:name=".scrollViewDemo.ClipToPaddingActivity">
-
         </activity>
         <activity android:name=".nestedScrollDemo.BaseNestedScrollDemoActivity">
+
+        </activity>
+        <activity android:name=".measureDemo.learnMeasure.LearnMeasureActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
