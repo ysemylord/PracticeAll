@@ -3,25 +3,37 @@ package com.example.xuyabo.androidperformance.customview;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.text.DynamicLayout;
 import android.text.Layout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.Target;
+import com.example.xuyabo.androidperformance.R;
 
 /**
  * Created by xuyabo on 2018/5/21.
  */
 
-public class CustomPerformanceLayout extends View {
+public class CustomPerformanceLayout extends View  {
     private DynamicLayout mNameSaticLayout;
     private DynamicLayout mDesSaticLayout;
     private TextPaint mNameTextPaint;
     private TextPaint mDesTextPaint;
     private String mNameStr;
     private String mDesStr;
+    private Drawable mIconDrawable ;
+    private int drawableSize=170;
     private int mTextOffset=0;
 
     public CustomPerformanceLayout(Context context) {
@@ -42,6 +54,9 @@ public class CustomPerformanceLayout extends View {
         mDesTextPaint.setTextSize(40);
         mDesTextPaint.setColor(Color.GRAY);
         mDesTextPaint.setAntiAlias(true);
+        mIconDrawable=  getResources().getDrawable(R.mipmap.ic_launcher);
+
+        mIconDrawable.setBounds(0,0,drawableSize,drawableSize);
 
     }
 
@@ -57,14 +72,17 @@ public class CustomPerformanceLayout extends View {
         mNameSaticLayout=new DynamicLayout(showName,mNameTextPaint,viewWidth, Layout.Alignment.ALIGN_NORMAL,1,0,false);
         mDesSaticLayout=new DynamicLayout(showDes,mDesTextPaint,viewWidth, Layout.Alignment.ALIGN_NORMAL,1,0,false);
         int textHeight=mNameSaticLayout.getHeight()+mDesSaticLayout.getHeight();
-        int viewHeight=textHeight+paddingTop+paddingBottom;
+        int viewHeight=Math.max(textHeight,drawableSize)+paddingTop+paddingBottom;
         setMeasuredDimension(viewWidth,viewHeight);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        mIconDrawable.draw(canvas);
         canvas.save();
+        canvas.translate(drawableSize,0);
         canvas.translate(0,getPaddingTop());
         mNameSaticLayout.draw(canvas);
         canvas.translate(0,mNameSaticLayout.getHeight());
@@ -72,8 +90,41 @@ public class CustomPerformanceLayout extends View {
         canvas.restore();
     }
 
-    public void setNameAndDes(String name,String des){
+    public void setNameAndDes(String name,String des,String imageUrl){
         mNameStr=name;
         mDesStr=des;
+
+        Glide.with(getContext())
+                .load(imageUrl)
+                .centerCrop()//按比例缩放剪切
+                .listener(new ImageRequestListener())
+                .into(new SimpleTarget<GlideBitmapDrawable>(drawableSize,drawableSize) {
+                    @Override
+                    public void onResourceReady(GlideBitmapDrawable resource, GlideAnimation glideAnimation) {
+                        Drawable currentDrawable = resource.getCurrent();
+                        currentDrawable.setBounds(mIconDrawable.getBounds());//必须要设置currentDrawable，不然currentDrawable绘制不出来。（因为不然currentDrawable绘制不出来的bouds初始为(0,0,0,0)）
+                        mIconDrawable= currentDrawable;
+                        invalidate();
+                    }
+                });
+
+
     }
+    static class ImageRequestListener implements RequestListener {
+
+        @Override
+        public boolean onException(Exception e, Object model, Target target, boolean isFirstResource) {
+            Log.e("loadeImage", e != null ? e.getLocalizedMessage() +"": "exception is null" + " " + model + " " + isFirstResource);
+            return false;
+        }
+
+        @Override
+        public boolean onResourceReady(Object resource, Object model, Target target, boolean isFromMemoryCache, boolean isFirstResource) {
+            Log.i("loadeImage", "isFromMemoryCache" + isFromMemoryCache + "\n");
+            return false;
+        }
+    }
+
+
+
 }

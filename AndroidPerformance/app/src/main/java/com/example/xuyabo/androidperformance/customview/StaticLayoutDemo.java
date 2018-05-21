@@ -2,12 +2,15 @@ package com.example.xuyabo.androidperformance.customview;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.text.DynamicLayout;
 import android.text.Layout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.example.xuyabo.androidperformance.R;
 
 /**
  * Created by xuyabo on 2018/5/21.
@@ -32,6 +35,9 @@ public class StaticLayoutDemo  extends View {
         String source = "大家好大家好大家好大家好大家好大家好大家好";
         mStaticLayout=new DynamicLayout(source, textPaint, canvas.getWidth(),Layout.Alignment.ALIGN_NORMAL,1,0,false);
         mStaticLayout.draw(canvas);
+        Drawable drawable= getResources().getDrawable(R.mipmap.ic_launcher);
+        drawable.setBounds(0,0,100,100);
+        drawable.draw(canvas);
     }
 
 }
