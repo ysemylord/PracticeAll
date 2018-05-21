@@ -19,9 +19,13 @@
         <activity android:name=".smoothDetection.systraceUse.UseTraceActivity">
         </activity>
         <activity android:name=".mesureTimeDemo.MeasureTimeDemoActivity">
-
         </activity>
         <activity android:name=".smoothDetection.useViewStub.ViewStubDemoActivity">
+        </activity>
+        <activity android:name=".recyclerViewPerformance.RecyclerViewPerformaceActivity">
+
+        </activity>
+        <activity android:name=".customview.CustomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
