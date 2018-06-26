@@ -33,7 +33,8 @@ public class CustomPerformanceLayout extends View  {
     private String mNameStr;
     private String mDesStr;
     private Drawable mIconDrawable ;
-    private int drawableSize=170;
+    private int mDrawableSize =170;
+    private int mDrawableMargin=20;
     private int mTextOffset=0;
 
     public CustomPerformanceLayout(Context context) {
@@ -56,7 +57,7 @@ public class CustomPerformanceLayout extends View  {
         mDesTextPaint.setAntiAlias(true);
         mIconDrawable=  getResources().getDrawable(R.mipmap.ic_launcher);
 
-        mIconDrawable.setBounds(0,0,drawableSize,drawableSize);
+        mIconDrawable.setBounds(0,0, mDrawableSize, mDrawableSize);
 
     }
 
@@ -65,24 +66,24 @@ public class CustomPerformanceLayout extends View  {
         int viewWidth=MeasureSpec.getSize(widthMeasureSpec);
         int paddingTop=getPaddingTop();
         int paddingBottom=getBottom();
-        float nameWidth=viewWidth;
-        float desWidth=viewWidth*2-10;
+        float nameWidth=viewWidth-mDrawableMargin*2-mDrawableSize;
+        float desWidth=(viewWidth-mDrawableMargin*2-mDrawableSize)*2;
         CharSequence showName= TextUtils.ellipsize(mNameStr,mNameTextPaint,nameWidth,TextUtils.TruncateAt.END);
         CharSequence showDes= TextUtils.ellipsize(mDesStr,mDesTextPaint,desWidth,TextUtils.TruncateAt.END);
         mNameSaticLayout=new DynamicLayout(showName,mNameTextPaint,viewWidth, Layout.Alignment.ALIGN_NORMAL,1,0,false);
         mDesSaticLayout=new DynamicLayout(showDes,mDesTextPaint,viewWidth, Layout.Alignment.ALIGN_NORMAL,1,0,false);
         int textHeight=mNameSaticLayout.getHeight()+mDesSaticLayout.getHeight();
-        int viewHeight=Math.max(textHeight,drawableSize)+paddingTop+paddingBottom;
+        int viewHeight=Math.max(textHeight, mDrawableSize)+paddingTop+paddingBottom;
         setMeasuredDimension(viewWidth,viewHeight);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        mIconDrawable.draw(canvas);
         canvas.save();
-        canvas.translate(drawableSize,0);
+        canvas.translate(mDrawableMargin,0);
+        mIconDrawable.draw(canvas);
+        canvas.translate(mDrawableSize+mDrawableMargin,0);
         canvas.translate(0,getPaddingTop());
         mNameSaticLayout.draw(canvas);
         canvas.translate(0,mNameSaticLayout.getHeight());
@@ -98,7 +99,7 @@ public class CustomPerformanceLayout extends View  {
                 .load(imageUrl)
                 .centerCrop()//按比例缩放剪切
                 .listener(new ImageRequestListener())
-                .into(new SimpleTarget<GlideBitmapDrawable>(drawableSize,drawableSize) {
+                .into(new SimpleTarget<GlideBitmapDrawable>(mDrawableSize, mDrawableSize) {
                     @Override
                     public void onResourceReady(GlideBitmapDrawable resource, GlideAnimation glideAnimation) {
                         Drawable currentDrawable = resource.getCurrent();

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.xuyabo.androidperformance">
-   <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
@@ -23,9 +25,11 @@
         <activity android:name=".smoothDetection.useViewStub.ViewStubDemoActivity">
         </activity>
         <activity android:name=".recyclerViewPerformance.RecyclerViewPerformaceActivity">
-
         </activity>
         <activity android:name=".customview.CustomActivity">
+
+        </activity>
+        <activity android:name=".LoadBitmapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
