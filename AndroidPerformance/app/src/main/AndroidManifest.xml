@@ -27,9 +27,16 @@
         <activity android:name=".recyclerViewPerformance.RecyclerViewPerformaceActivity">
         </activity>
         <activity android:name=".customview.CustomActivity">
-
         </activity>
         <activity android:name=".LoadBitmapActivity">
+        </activity>
+        <activity android:name=".smoothDetection.useViewStub.ViewStubAndDataBindingActivity">
+
+        </activity>
+        <activity android:name=".smoothDetection.useViewStub.ViewPagerWithUserHintActivity">
+
+        </activity>
+        <activity android:name=".smoothDetection.useViewStub.ViewPagerPreActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
