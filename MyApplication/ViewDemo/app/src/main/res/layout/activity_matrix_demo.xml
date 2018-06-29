@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.test.viewdemo.animationDemo.MatrixGroup
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<FrameLayout
+
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.test.viewdemo.animationDemo.MatrixDemoActivity">
+    android:id="@+id/root"
 
-
+    >
     <Button
         android:id="@+id/btn"
-        android:layout_width="84dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_width="wrap_content"
+        android:text="1222"
+        android:layout_height="wrap_content"/>
 
+</FrameLayout>
 
-</com.test.viewdemo.animationDemo.MatrixGroup>
+    <com.test.viewdemo.animationDemo.MatrixGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:text="按钮"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </com.test.viewdemo.animationDemo.MatrixGroup>
+</LinearLayout>

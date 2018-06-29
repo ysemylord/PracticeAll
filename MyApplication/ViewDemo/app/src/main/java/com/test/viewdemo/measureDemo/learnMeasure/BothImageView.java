@@ -11,7 +11,7 @@ import com.test.viewdemo.R;
 /**
  * Created by xuyabo on 2018/4/29.
  * 1. 覆盖onMeasure，完全自定义尺寸
- * 2. 覆盖onLayout,计算子View的位置
+ * 2. 覆盖onLayout,计算子View的位置，实现mImageView1与mImageView2的垂直线性布局
  */
 
 public class BothImageView extends ViewGroup {

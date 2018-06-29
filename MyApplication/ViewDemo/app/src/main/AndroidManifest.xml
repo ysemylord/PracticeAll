@@ -67,6 +67,11 @@
             android:name=".animationDemo.MatrixDemoActivity"
             android:label="@string/title_activity_matrix_demo"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".DrawableTestActivity">
         </activity>
@@ -87,14 +92,16 @@
         <activity android:name=".scrollViewDemo.ClipToPaddingActivity">
         </activity>
         <activity android:name=".nestedScrollDemo.BaseNestedScrollDemoActivity">
-
         </activity>
         <activity android:name=".measureDemo.learnMeasure.LearnMeasureActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+        </activity>
+        <activity android:name=".viewPager.extensionvsion2.tabLayoutByViewPager.ViewPagerTabLayoutActivity">
+        </activity>
+        <activity android:name=".TouchEventDemo.DispatchTouchEventDemoActivity">
+        </activity>
+        <activity android:name=".BaseDraw.ScrollDemoActivity">
+        </activity>
+        <activity android:name=".animationDemo.ScrollToTestActivity">
         </activity>
     </application>
 

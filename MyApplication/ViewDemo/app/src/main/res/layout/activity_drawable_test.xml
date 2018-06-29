@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,4 +15,26 @@
        android:layout_marginTop="8dp"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent"/>
-</android.support.constraint.ConstraintLayout>
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:id="@+id/test_price_drawable"
+       android:text="2333"
+       android:textColor="#ffffff"
+       android:layout_height="wrap_content"></TextView>
+
+   <com.test.viewdemo.mydrawable.PriceFrameTextView
+       android:layout_width="wrap_content"
+       android:text="2333"
+       android:paddingRight="10dp"
+       android:textColor="#ffffff"
+       android:layout_height="wrap_content"/>
+
+   <TextView
+       android:text="122"
+       android:gravity="center"
+       android:layout_marginLeft="10dp"
+       android:layout_width="match_parent"
+       android:id="@+id/rmd_bg"
+       android:layout_height="20dp"></TextView>
+</LinearLayout>

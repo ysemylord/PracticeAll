@@ -1,4 +1,4 @@
-package com.example.android.swiperefreshlayoutbasic;
+package com.test.viewdemo.mySwipeRefreshLayout;
 
 /**
  * Created by xuyabo on 2018/4/24.
