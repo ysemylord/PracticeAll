@@ -101,9 +101,11 @@
         <activity android:name=".AnnotationDemo.AnnotaionDemoActivity">
         </activity>
         <activity android:name=".learnStructure.mvc.MVCDemoActivity">
-
         </activity>
         <activity android:name=".learnStructure.mvp.MVPDemoActivity">
+
+        </activity>
+        <activity android:name=".learnStructure.mvvm.MVVMDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
