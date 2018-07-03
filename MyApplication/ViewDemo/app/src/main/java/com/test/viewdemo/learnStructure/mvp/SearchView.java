@@ -37,7 +37,7 @@ public class SearchView extends Fragment implements SearchContact.SearchView {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_mvcdemo, container, false);
+        View view = inflater.inflate(R.layout.strcut_view_demo, container, false);
         ButterKnife.bind(this, view);
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override

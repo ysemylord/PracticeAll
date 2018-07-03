@@ -26,7 +26,7 @@ public class MVCDemoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mvcdemo);
+        setContentView(R.layout.strcut_view_demo);
         ButterKnife.bind(this);
         mSearchModel=new SearchModel();
     }
