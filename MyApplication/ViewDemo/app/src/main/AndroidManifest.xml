@@ -67,7 +67,6 @@
             android:name=".animationDemo.MatrixDemoActivity"
             android:label="@string/title_activity_matrix_demo"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
         <activity android:name=".DrawableTestActivity">
         </activity>
@@ -100,6 +99,9 @@
         <activity android:name=".animationDemo.ScrollToTestActivity">
         </activity>
         <activity android:name=".AnnotationDemo.AnnotaionDemoActivity">
+
+        </activity>
+        <activity android:name=".learnStructure.mvc.MVCDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
