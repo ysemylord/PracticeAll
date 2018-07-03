@@ -1,4 +1,6 @@
-package com.test.viewdemo.learnStructure.mvc;
+package com.test.viewdemo.learnStructure;
+
+import com.test.viewdemo.learnStructure.mvc.SearchRes;
 
 import java.util.Random;
 
@@ -7,7 +9,7 @@ import java.util.Random;
  */
 
 public class SearchModel {
-    public  SearchRes search(String key){
+    public SearchRes search(String key){
         try {
             Thread.sleep(300);//模拟网络请求
         } catch (InterruptedException e) {

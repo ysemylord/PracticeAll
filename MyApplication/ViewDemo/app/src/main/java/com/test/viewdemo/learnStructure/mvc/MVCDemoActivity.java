@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.test.viewdemo.R;
+import com.test.viewdemo.learnStructure.SearchModel;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

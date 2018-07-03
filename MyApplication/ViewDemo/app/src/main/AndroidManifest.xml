@@ -99,9 +99,11 @@
         <activity android:name=".animationDemo.ScrollToTestActivity">
         </activity>
         <activity android:name=".AnnotationDemo.AnnotaionDemoActivity">
-
         </activity>
         <activity android:name=".learnStructure.mvc.MVCDemoActivity">
+
+        </activity>
+        <activity android:name=".learnStructure.mvp.MVPDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
