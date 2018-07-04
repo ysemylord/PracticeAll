@@ -103,9 +103,11 @@
         <activity android:name=".learnStructure.mvc.MVCDemoActivity">
         </activity>
         <activity android:name=".learnStructure.mvp.MVPDemoActivity">
-
         </activity>
         <activity android:name=".learnStructure.mvvm.MVVMDemoActivity">
+
+        </activity>
+        <activity android:name=".longImageLoad.LongImageLoadActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
