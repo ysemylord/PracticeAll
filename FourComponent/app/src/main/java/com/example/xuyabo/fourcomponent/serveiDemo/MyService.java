@@ -13,7 +13,7 @@ import android.util.Log;
 import com.example.xuyabo.fourcomponent.R;
 
 public class MyService extends Service {
-    private static final String TAG = "MyService";
+    private static final String TAG = "AddService";
     private Thread mThread;
     private boolean mStop = false;
     private int mCount=0;
