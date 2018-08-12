@@ -31,6 +31,7 @@ public class MessengerDemoService extends Service {
                     String clientSendMsg = data.getString("msg");
                     Log.i(TAG, "Server: 收到客户端的消息 " + clientSendMsg);
                     //回复消息
+
                     Messenger clientMessenger= msg.replyTo;
                     Message replyMessage=new Message();
                     Bundle replyBundle=new Bundle();

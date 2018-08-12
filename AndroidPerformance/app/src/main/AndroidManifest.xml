@@ -31,17 +31,20 @@
         <activity android:name=".LoadBitmapActivity">
         </activity>
         <activity android:name=".smoothDetection.useViewStub.ViewStubAndDataBindingActivity">
-
         </activity>
         <activity android:name=".smoothDetection.useViewStub.ViewPagerWithUserHintActivity">
-
         </activity>
         <activity android:name=".smoothDetection.useViewStub.ViewPagerPreActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+        </activity>
+        <activity android:name=".memoryDemo.LeakCanaryDemoActivity">
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+        </activity>
+        <activity android:name=".memoryDemo.LeakCanaryHostActivity"><intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
+
         </activity>
     </application>
 

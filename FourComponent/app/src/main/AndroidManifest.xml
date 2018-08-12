@@ -57,7 +57,11 @@
             android:theme="@style/AppTheme.Transparent">
         </activity>
         <activity android:name=".aidlDemo.BinderDemoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <service
@@ -74,11 +78,7 @@
         </service>
 
         <activity android:name=".MessengerDemo.MessengerDemoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
     </application>
 

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.test.viewdemo">
-   <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -108,9 +110,19 @@
         <activity android:name=".learnStructure.mvvm.MVVMDemoActivity">
         </activity>
         <activity android:name=".longImageLoad.LongImageLoadActivity">
-         
         </activity>
         <activity android:name=".runtimePermission.RuntimePermissionDemoActivity">
+
+        </activity>
+        <activity android:name=".RxAndroidDemo.ShowAllAppActivity">
+
+        </activity>
+
+        <activity android:name=".RxAndroidDemo.ShowAllFromAppActivity">
+
+        </activity>
+
+        <activity android:name=".RxAndroidDemo.ShowAllJustAppActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
