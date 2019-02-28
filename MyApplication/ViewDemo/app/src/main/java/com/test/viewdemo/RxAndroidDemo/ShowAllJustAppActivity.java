@@ -3,8 +3,10 @@ package com.test.viewdemo.RxAndroidDemo;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ListView;
 
+import com.test.viewdemo.AlertDialogFragment;
 import com.test.viewdemo.R;
 
 import java.util.ArrayList;
@@ -64,6 +66,10 @@ public class ShowAllJustAppActivity extends AppCompatActivity {
                         mAppAdapter.addData(appInfo);
                     }
                 });
+    }
+    public void showDialog(View view){
+        AlertDialogFragment alertDialogFragment=new AlertDialogFragment();
+        alertDialogFragment.show(getSupportFragmentManager().beginTransaction(),"DialogFragment");
     }
 
 

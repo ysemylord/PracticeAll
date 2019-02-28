@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity">
+        </activity>
         <activity android:name=".DialogActivity"/>
         <activity
             android:name=".viewAnimationDemo.BaseViewAnimationDemoActivity"
@@ -112,17 +114,21 @@
         <activity android:name=".longImageLoad.LongImageLoadActivity">
         </activity>
         <activity android:name=".runtimePermission.RuntimePermissionDemoActivity">
-
         </activity>
         <activity android:name=".RxAndroidDemo.ShowAllAppActivity">
-
         </activity>
-
         <activity android:name=".RxAndroidDemo.ShowAllFromAppActivity">
+        </activity>
+        <activity android:name=".RxAndroidDemo.ShowAllJustAppActivity">
+        </activity>
+        <activity android:name=".media.RecordAudioActivity">
+        </activity>
+        <activity android:name=".bitmapDemo.BitmapDemoActivity">
 
         </activity>
-
-        <activity android:name=".RxAndroidDemo.ShowAllJustAppActivity">
+        <activity android:name=".cameraDemo.CameraDActivity"
+            android:screenOrientation="landscape"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
