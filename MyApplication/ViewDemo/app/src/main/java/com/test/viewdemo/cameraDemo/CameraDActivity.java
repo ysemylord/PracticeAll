@@ -12,6 +12,7 @@ public class CameraDActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_d);
         FlipView flipView=findViewById(R.id.flip_view);
-        flipView.autoFlip();
+
+        //flipView.autoFlip();
     }
 }

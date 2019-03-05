@@ -20,10 +20,21 @@ public class TestDisFrameLayout extends ScrollView {
     public TestDisFrameLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        if(ev.getAction()==MotionEvent.ACTION_DOWN){
+            Log.i("TestDisFrameLayout", "onInterceptTouchEvent: false "+MotionEventHelper.getActionString(ev));
+            return false;
+        }else{
+            Log.i("TestDisFrameLayout", "onInterceptTouchEvent: false "+MotionEventHelper.getActionString(ev));
+            return false;
+        }
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        boolean res=super.onTouchEvent(event);
-        Log.i("TestDisFrameLayout", "onTouchEvent: "+MotionEventHelper.getActionString(event)+" "+res);
-        return res;
+        Log.i("TestDisFrameLayout", "onTouchEvent: "+MotionEventHelper.getActionString(event));
+        return true;
     }
 }

@@ -22,8 +22,12 @@ public class TestDisView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        boolean res=super.onTouchEvent(event);
-        Log.i("TestDisView", "onTouchEvent: "+MotionEventHelper.getActionString(event)+" "+res);
-        return res;
+
+        Log.i("TestDisView", "onTouchEvent: "+MotionEventHelper.getActionString(event));
+        if(event.getAction()==MotionEvent.ACTION_DOWN){
+            return false;
+        }else {
+            return false;
+        }
     }
 }

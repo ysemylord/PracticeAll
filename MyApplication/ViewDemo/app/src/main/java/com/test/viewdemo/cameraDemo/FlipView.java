@@ -12,8 +12,11 @@ import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.animation.LinearInterpolator;
+import android.widget.Scroller;
 
 import com.test.viewdemo.R;
 
@@ -21,10 +24,12 @@ public class FlipView extends View {
     private static final String TAG = "FlipView";
     private Bitmap mFirstBitmap;
     private Bitmap mSecondBitmap;
-    private int angle = 0;//模拟翻书时被翻动的页的角度（从0到180）
+    private float angle = 0;//模拟翻书时被翻动的页的角度（从0到180）
     private Paint mPaint;
     private Camera mCamera;
     private Matrix mMatrix;
+    private int mTouchSlop;//被认为是滑动的最小距离
+    private Scroller mScroller;
 
     public FlipView(Context context) {
         this(context, null);
@@ -45,9 +50,70 @@ public class FlipView extends View {
         mPaint = new Paint();
         mCamera = new Camera();
         mMatrix = new Matrix();
+
+        mScroller = new Scroller(getContext(), new LinearInterpolator());
+        final ViewConfiguration configuration = ViewConfiguration.get(getContext());
+        mTouchSlop = configuration.getScaledPagingTouchSlop();
+
+
     }
 
+    private float mLastX;
+    private boolean mIsFling=false;
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = event.getAction();
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                mLastX = event.getX();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float nowX = event.getX();
+                float deltaX = nowX - mLastX;
+                float absDeltaX = Math.abs(deltaX);
+
+                if(absDeltaX >= mTouchSlop){
+                    mIsFling=true;
+                }
+
+                if (mIsFling) {
+                    float flipDistance = -deltaX / (getWidth() / 180);
+                    angle += flipDistance;
+                    angle = Math.max(angle, 0);
+                    angle = Math.min(angle, 180);
+                    invalidate();
+                    mLastX = nowX;
+                    Log.i(TAG, "onTouchEvent: angle " + angle);
+                } else {
+                    Log.i(TAG, "onTouchEvent: angle " + angle);
+                }
+
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                if(mIsFling) {
+                    final int startX = (int) this.angle;
+                    final int dx;
+                    final int duration;
+
+                    if (this.angle >= 0 && this.angle <= 90) {
+                        dx = (int) -this.angle;
+                        duration = (int) (1000 * (this.angle) / 180);
+                        mScroller.startScroll(startX, 0, dx, 0, duration);
+                    } else if (this.angle <= 180 && this.angle >= 90) {
+                        dx = (int) (180 - this.angle);
+                        duration = (int) (1000 * (180 - this.angle) / 180);
+                        mScroller.startScroll(startX, 0, dx, 0, duration);
+                    }
+                    invalidate();
+                    mIsFling = false;
+                }
+                break;
+        }
+
+        return true;
+    }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
@@ -65,21 +131,25 @@ public class FlipView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        if (!mScroller.isFinished() && mScroller.computeScrollOffset()) {
+            angle = mScroller.getCurrX();
+            invalidate();
+            Log.i(TAG, "onDraw mScroller: " + angle);
+        }
 
         //绘制第一页的左边
         canvas.save();
-        Rect rectClipRight=new Rect(0, 0, getWidth() / 2, getHeight());
+        Rect rectClipRight = new Rect(0, 0, getWidth() / 2, getHeight());
         canvas.clipRect(rectClipRight);
         canvas.drawBitmap(mFirstBitmap, 0, 0, mPaint);
         canvas.restore();
 
         //绘制第二页的右边
         canvas.save();
-        Rect rectClipLeft=new Rect(getWidth() / 2,0, getWidth() , getHeight());
+        Rect rectClipLeft = new Rect(getWidth() / 2, 0, getWidth(), getHeight());
         canvas.clipRect(rectClipLeft);
         canvas.drawBitmap(mSecondBitmap, 0, 0, mPaint);
         canvas.restore();
-
 
 
         canvas.save();
@@ -92,7 +162,7 @@ public class FlipView extends View {
             mCamera.rotateY(180 - angle);
         }
         mCamera.getMatrix(mMatrix);
-        fixMatrix();
+        positionMatrix();
         canvas.setMatrix(mMatrix);
 
         //更具角度决定绘制的内容
@@ -108,14 +178,20 @@ public class FlipView extends View {
 
     }
 
-    private void fixMatrix() {
-        mMatrix.postScale(4.0f, 4.0f);
+    private void positionMatrix() {
+        //因为直接投影，投影会较大，所以用preScale缩小坐标，投影过后,然后使用postScale放大坐标
+        //所以下面两行代码可以使用mCamera.setLocation()代替
+
         mMatrix.preScale(0.25f, 0.25f);
         mMatrix.preTranslate(-getWidth() / 2, -getHeight() / 2);
+        mMatrix.postScale(4f, 4f);
         mMatrix.postTranslate(getWidth() / 2, getHeight() / 2);
+
     }
 
+
     public void autoFlip() {
+
         ValueAnimator valueAnimator = ValueAnimator.ofInt(0, 180);
         valueAnimator.setDuration(10 * 1000);
         valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
