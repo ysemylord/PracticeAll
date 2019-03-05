@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.LinearInterpolator;
@@ -28,8 +29,12 @@ public class FlipView extends View {
     private Paint mPaint;
     private Camera mCamera;
     private Matrix mMatrix;
+
     private int mTouchSlop;//被认为是滑动的最小距离
     private Scroller mScroller;
+    private int mMinimumFlingVelocity;//被认为是惯性滑动的最小距离
+    private int mMaximumFlingVelocity;//被认为是惯性滑动的最大距离
+    private VelocityTracker mVelocityTracker;
 
     public FlipView(Context context) {
         this(context, null);
@@ -54,12 +59,14 @@ public class FlipView extends View {
         mScroller = new Scroller(getContext(), new LinearInterpolator());
         final ViewConfiguration configuration = ViewConfiguration.get(getContext());
         mTouchSlop = configuration.getScaledPagingTouchSlop();
-
+        mMinimumFlingVelocity = configuration.getScaledMinimumFlingVelocity();
+        mMaximumFlingVelocity = configuration.getScaledMaximumFlingVelocity();
+        mVelocityTracker = VelocityTracker.obtain();
 
     }
 
     private float mLastX;
-    private boolean mIsFling=false;
+    private boolean mIsFling = false;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -67,14 +74,15 @@ public class FlipView extends View {
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 mLastX = event.getX();
+                recycleVelocityTracker();
                 break;
             case MotionEvent.ACTION_MOVE:
                 float nowX = event.getX();
                 float deltaX = nowX - mLastX;
                 float absDeltaX = Math.abs(deltaX);
 
-                if(absDeltaX >= mTouchSlop){
-                    mIsFling=true;
+                if (absDeltaX >= mTouchSlop) {
+                    mIsFling = true;
                 }
 
                 if (mIsFling) {
@@ -89,30 +97,66 @@ public class FlipView extends View {
                     Log.i(TAG, "onTouchEvent: angle " + angle);
                 }
 
+                traceVelocity(event);
+
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-                if(mIsFling) {
-                    final int startX = (int) this.angle;
-                    final int dx;
-                    final int duration;
+                if (mIsFling) {
 
-                    if (this.angle >= 0 && this.angle <= 90) {
-                        dx = (int) -this.angle;
-                        duration = (int) (1000 * (this.angle) / 180);
-                        mScroller.startScroll(startX, 0, dx, 0, duration);
-                    } else if (this.angle <= 180 && this.angle >= 90) {
-                        dx = (int) (180 - this.angle);
-                        duration = (int) (1000 * (180 - this.angle) / 180);
-                        mScroller.startScroll(startX, 0, dx, 0, duration);
-                    }
-                    invalidate();
                     mIsFling = false;
+                    if (mVelocityTracker != null) {
+                        final int startX = (int) angle;
+                        final int dx;
+                        final int duration;
+                        mVelocityTracker.computeCurrentVelocity(1000, mMaximumFlingVelocity);
+                        float xVelocity = mVelocityTracker.getXVelocity();
+                        if (Math.abs(xVelocity) >= mMinimumFlingVelocity) {//惯性滑动
+                            if (angle >= 0 && angle <= 90) {
+                                dx = (int) (180 - angle);
+                                duration = (1000 * dx / 180);//1度滑1秒
+                                mScroller.startScroll(startX, 0, dx, 0, duration);
+                            } else if (angle >= 90 && angle <= 180) {
+                                dx = (int) (0 - angle);
+                                duration = 1000 * (Math.abs(dx)) / 180;
+                                mScroller.startScroll(startX, 0, dx, 0, duration);
+                            }
+                            Log.i(TAG, "onTouchEvent: fling");
+                        } else {//不是惯性滑动
+
+                            if (this.angle >= 0 && angle <= 90) {
+                                dx = (int) -angle;
+                                duration = (int) (1000 * (angle) / 180);
+                                mScroller.startScroll(startX, 0, dx, 0, duration);
+                            } else if (this.angle <= 180 && angle >= 90) {
+                                dx = (int) (180 - angle);
+                                duration = (int) (1000 * (180 - angle) / 180);
+                                mScroller.startScroll(startX, 0, dx, 0, duration);
+                            }
+                        }
+                        recycleVelocityTracker();
+                        invalidate();
+                    }
                 }
                 break;
         }
 
         return true;
+    }
+
+    private void traceVelocity(MotionEvent event) {
+        if (mVelocityTracker == null) {
+            mVelocityTracker = VelocityTracker.obtain();
+        }
+        mVelocityTracker.addMovement(event);
+    }
+
+    private void recycleVelocityTracker() {
+        if (mVelocityTracker != null) {
+            mVelocityTracker.clear();
+            mVelocityTracker.recycle();
+            mVelocityTracker = null;
+        }
     }
 
     @Override
