@@ -35,6 +35,8 @@ public class FlipView extends View {
     private int mMinimumFlingVelocity;//被认为是惯性滑动的最小距离
     private int mMaximumFlingVelocity;//被认为是惯性滑动的最大距离
     private VelocityTracker mVelocityTracker;
+    private static final int INVALID_POINT = -1;
+    private static int mActivePointerId = INVALID_POINT;
 
     public FlipView(Context context) {
         this(context, null);
@@ -68,16 +70,27 @@ public class FlipView extends View {
     private float mLastX;
     private boolean mIsFling = false;
 
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int action = event.getAction();
+
+        Log.i(TAG, "onTouchEvent: MotionEvent: " + event.hashCode() + "|" + (event.getAction()
+                & MotionEvent.ACTION_POINTER_INDEX_MASK));
+        int action = event.getActionMasked();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                mLastX = event.getX();
+                mActivePointerId = event.getPointerId(0);//触发MotionEvent.ACTION_DOWN事件的手指通常在数组中的第一个，故pointerIndex=0
+                mLastX = event.getX(0);
                 recycleVelocityTracker();
+                Log.i(TAG, "onTouchEvent: ACTION_DOWN");
+                break;
+            case MotionEvent.ACTION_POINTER_DOWN:
+                onSecondaryPointerDown(event);
+                Log.i(TAG, "onTouchEvent: ACTION_POINTER_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                float nowX = event.getX();
+                int pointerIndex = event.findPointerIndex(mActivePointerId);
+                float nowX = event.getX(pointerIndex);
                 float deltaX = nowX - mLastX;
                 float absDeltaX = Math.abs(deltaX);
 
@@ -139,9 +152,32 @@ public class FlipView extends View {
                     }
                 }
                 break;
+            case MotionEvent.ACTION_POINTER_UP:
+                onSecondaryPointerUp(event);
+                break;
         }
 
         return true;
+    }
+
+    private void onSecondaryPointerDown(MotionEvent event) {
+        mActivePointerId = event.getPointerId(event.getActionIndex());
+        mLastX = event.getX(event.getActionIndex());
+    }
+
+    private void onSecondaryPointerUp(MotionEvent ev) {
+        final int pointerIndex = ev.getActionIndex();
+        final int pointerId = ev.getPointerId( pointerIndex);
+        if (pointerId == mActivePointerId) {
+            // This was our active pointer going up. Choose a new
+            // active pointer and adjust accordingly.
+            final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
+            mLastX = ev.getX( newPointerIndex);
+            mActivePointerId = ev.getPointerId(newPointerIndex);
+            if (mVelocityTracker != null) {
+                mVelocityTracker.clear();
+            }
+        }
     }
 
     private void traceVelocity(MotionEvent event) {
