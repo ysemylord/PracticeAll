@@ -97,7 +97,6 @@
         </activity>
         <activity android:name=".viewPager.extensionvsion2.tabLayoutByViewPager.ViewPagerTabLayoutActivity">
         </activity>
-
         <activity android:name=".BaseDraw.ScrollDemoActivity">
         </activity>
         <activity android:name=".animationDemo.ScrollToTestActivity">
@@ -123,21 +122,23 @@
         <activity android:name=".media.RecordAudioActivity">
         </activity>
         <activity android:name=".bitmapDemo.BitmapDemoActivity">
+        </activity>
+        <activity
+            android:name=".cameraDemo.CameraDActivity"
+            android:screenOrientation="landscape">
 
         </activity>
-        <activity android:name=".cameraDemo.CameraDActivity"
+        <activity android:name=".TouchEventDemo.DispatchTouchEventDemoActivity">
+        </activity>
+        <activity
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:screenOrientation="landscape"
-            >
+            android:name=".xview.EarthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
-        </activity>
-
-        <activity android:name=".TouchEventDemo.DispatchTouchEventDemoActivity">
-
         </activity>
     </application>
 
