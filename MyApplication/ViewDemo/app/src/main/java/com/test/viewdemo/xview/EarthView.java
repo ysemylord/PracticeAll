@@ -19,10 +19,10 @@ public class EarthView extends View {
     private Bitmap mAtmosphereBitmap;//大气光环
     private Bitmap mHaloBitmap;//光环
     private Bitmap mHaloWithHollow;
-    private int mScreenHeight;
     private Paint mHaloPaint;
-    private Paint mScallopPaint;
     private Bitmap mScallopBitmap;
+    private Bitmap mBgBitmap;
+    private Paint mSimplePaint;
 
     public EarthView(Context context) {
         super(context);
@@ -36,51 +36,77 @@ public class EarthView extends View {
 
     private void init() {
         DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
-        mScreenHeight = displayMetrics.heightPixels;
         mHaloPaint = new Paint();
         mHaloPaint.setAntiAlias(true);
         mHaloPaint.setDither(true);
 
-        mScallopPaint = new Paint();
-        mScallopPaint.setAntiAlias(true);
-        mScallopPaint.setDither(true);
-        mScallopPaint.setColor(Color.parseColor("#af000000"));
+
+        mSimplePaint = new Paint();
+
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
+
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
         //大气
         if (mAtmosphereBitmap == null) {
             mAtmosphereBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.lib_bg_atmosphere);
-            int atmosphereWidth = (int) (mScreenHeight * 9f / 10);
+            int atmosphereWidth = (int) (getMeasuredHeight() * 9f / 10);
             mAtmosphereBitmap = Bitmap.createScaledBitmap(mAtmosphereBitmap, atmosphereWidth * 688 / 592, atmosphereWidth, false);
         }
 
         //光环
         if (mHaloBitmap == null) {
             mHaloBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.mc_bg_map_halo);
-            int haloWidth = (int) (mScreenHeight * 9f / 10);
+            int haloWidth = (int) (getMeasuredHeight() * 9f / 10);
             mHaloBitmap = Bitmap.createScaledBitmap(mHaloBitmap, haloWidth, haloWidth, false);
             mHaloWithHollow = haloWithHollow();
         }
 
         //月牙
+        int scallopRadius = (int) (mHaloBitmap.getHeight() / 2 * 0.83f);
         if (mScallopBitmap == null) {
+
+            Paint scallopPaint = new Paint();
+            scallopPaint.setAntiAlias(true);
+            scallopPaint.setDither(true);
+            scallopPaint.setColor(Color.parseColor("#4f000000"));
+
             mScallopBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(mScallopBitmap);
+            Canvas scallopCanvas = new Canvas(mScallopBitmap);
 
-            mScallopPaint.setColor(Color.parseColor("#5F000000"));
-            int scallopRadius = (int) (mHaloBitmap.getHeight() / 2 * 0.83f);
-            canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, scallopRadius , mScallopPaint);
+            scallopCanvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, scallopRadius, scallopPaint);
 
-            mScallopPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+            scallopPaint.reset();//画笔的透明度会对最终的效果有影响
+            scallopPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
 
             int offset = 50;
-            canvas.drawCircle(getMeasuredWidth() / 2 + offset, getMeasuredHeight() / 2 - offset, scallopRadius , mScallopPaint);
-            mScallopPaint.setXfermode(null);
+            scallopCanvas.drawCircle(getMeasuredWidth() / 2 + offset, getMeasuredHeight() / 2 - offset, scallopRadius, scallopPaint);
+            scallopPaint.setXfermode(null);
 
+        }
+
+        //背景
+        if (mBgBitmap == null) {
+            Bitmap canvasBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+            Canvas bgCanvas = new Canvas(canvasBitmap);
+
+            Bitmap bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.lib_base_bg, new BitmapFactory.Options());
+            bgBitmap = Bitmap.createScaledBitmap(bgBitmap, getWidth(), getWidth()*720/1080, false);
+
+            Paint bgPaint = new Paint();
+            bgCanvas.drawBitmap(bgBitmap, 0, 0, bgPaint);
+            bgPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+            bgCanvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, scallopRadius, bgPaint);
+            bgPaint.setXfermode(null);
+            mBgBitmap=canvasBitmap;
         }
     }
 
@@ -89,12 +115,21 @@ public class EarthView extends View {
         super.onDraw(canvas);
 
 
-        canvas.drawBitmap(mAtmosphereBitmap, (getMeasuredWidth() - mAtmosphereBitmap.getWidth()) >> 1, (getMeasuredHeight() - mAtmosphereBitmap.getHeight()) >> 1, mHaloPaint);
 
 
-        canvas.drawBitmap(mHaloWithHollow, 0, 0, mHaloPaint);
-        canvas.drawBitmap(mScallopBitmap, 0, 0, mHaloPaint);
+        canvas.drawBitmap(mBgBitmap,0,0, mSimplePaint);
 
+        //大气
+        canvas.drawBitmap(mAtmosphereBitmap, (getMeasuredWidth() - mAtmosphereBitmap.getWidth()) >> 1, (getMeasuredHeight() - mAtmosphereBitmap.getHeight()) >> 1, mSimplePaint);
+
+
+
+        //光环
+        canvas.drawBitmap(mHaloWithHollow, 0, 0, mSimplePaint);
+
+
+        //月牙
+        canvas.drawBitmap(mScallopBitmap, 0, 0, mSimplePaint);
 
     }
 
